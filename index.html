@@ -85,8 +85,8 @@ details summary::-webkit-details-marker{display:none}
 .lp-frame{background:#0B0D2A;border:1px solid rgba(255,255,255,.1)}
 .lp-band{background:linear-gradient(180deg,#05061A,#080A24 30%,#080A24 70%,#05061A)}
 .lp-modal{background:#0B0D2A;color:#F3F1FF;min-height:100%}
-.comm-btn{background:linear-gradient(#05061A,#05061A) padding-box,linear-gradient(92deg,#7C5CFF,#E0409A) border-box;border:1.5px solid transparent}
-.comm-btn:hover{background:linear-gradient(92deg,rgba(124,92,255,.25),rgba(224,64,154,.25)) padding-box,linear-gradient(92deg,#7C5CFF,#E0409A) border-box}
+.comm-btn{background-image:linear-gradient(100deg,#7C5CFF 0%,#3D6BFF 35%,#E0409A 70%,#7C5CFF 100%);background-size:220% 100%;background-position:0% 50%;border:1px solid rgba(255,255,255,.18);box-shadow:0 8px 22px -12px rgba(124,92,255,.8);transition:background-position .6s ease,box-shadow .3s ease,transform .15s ease}
+.comm-btn:hover,.comm-btn:focus-visible{background-position:100% 50%;box-shadow:0 10px 26px -10px rgba(224,64,154,.85);transform:translateY(-1px)}
 .story-card{border:1px solid rgba(255,255,255,.1);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s,border-color .45s}
 .story-card:hover,.story-card:focus-within{transform:translateY(-6px);border-color:color-mix(in srgb,var(--c1) 60%,transparent);box-shadow:0 30px 60px -30px var(--c1)}
 .story-cta{background:linear-gradient(92deg,var(--c1),var(--c2));box-shadow:0 10px 24px -12px var(--c1)}
