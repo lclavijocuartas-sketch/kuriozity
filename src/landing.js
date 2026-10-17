@@ -322,8 +322,7 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
           <span className="block serif grad-text text-[clamp(2.7rem,7.6vw,6.2rem)] leading-[1.02] mt-2 pb-2">Necesita mejores preguntas.</span>
         </h1>
         <div className="mt-8 max-w-[58ch] space-y-4 text-[clamp(1rem,1.6vw,1.15rem)] leading-relaxed text-white/75">
-          <p>La tecnología avanza. El mundo cambia. Las nuevas generaciones aprenden, se comunican y descubren el mundo de maneras diferentes.</p>
-          <p className="text-white/90">Pero ¿estamos transformando la manera de enseñar para despertar su curiosidad, creatividad y capacidad de pensar por sí mismas?</p>
+          <p>La tecnología avanza. El mundo cambia. <span className="text-white/90">Pero ¿estamos transformando al mismo ritmo la manera de enseñar?</span></p>
         </div>
         <div className="mt-10 flex flex-wrap gap-3">
           <button onClick=${() => go('historias')} className=${btn + ' cta-grad cta-pulse pulse-white text-white font-bold px-6 py-3.5 text-[16px] hover:-translate-y-0.5'}>Explorar el universo <${Icon} name="arrow" size=${18} /></button>
