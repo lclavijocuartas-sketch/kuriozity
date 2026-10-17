@@ -133,3 +133,63 @@ function ComposerPoints({ f, me, posts }) {
     <span className="text-mute leading-tight hidden sm:inline">${type === 'replicate' ? 'Réplica en tu contexto' : replica ? `Cuenta algo del proceso para que valga como réplica (+${POINTS.replicate})` : 'Publicación'}</span>
   </div>`;
 }
+
+/* Después de publicar o replicar: cuánto ganó, qué tan cerca está de la meta y qué puede desbloquear. */
+function PointsEarnedModal({ data, onClose, onSee }) {
+  const d = data;
+  const info = d ? levelInfo(d.after) : null;
+  const nxt = info && info.nxt;
+  const from = info ? info.from : 0;
+  const span = nxt ? nxt.min - from : 1;
+  const pctBefore = nxt ? Math.max(0, Math.min(100, ((d.before - from) / span) * 100)) : 100;
+  const pctAfter = nxt ? Math.max(0, Math.min(100, ((d.after - from) / span) * 100)) : 100;
+  const left = nxt ? nxt.min - d.after : 0;
+  const nReplicas = Math.ceil(left / POINTS.replicate), nPubs = Math.ceil(left / POINTS.publish);
+  const later = nxt ? LEVELS.filter(l => l.n > nxt.n) : [];
+  const isRep = d && d.type === 'replicate';
+  return html`<${Modal} open=${!!d} onClose=${onClose} size="max-w-2xl" label="Puntos ganados">
+    ${d && html`<div>
+      <button type="button" onClick=${onClose} aria-label="Cerrar" className="absolute right-3 top-3 z-10 w-9 h-9 grid place-items-center rounded-full bg-white/15 text-white hover:bg-white/25"><${Icon} name="x" size=${18} /></button>
+      <div className="relative bg-ink text-white px-6 sm:px-9 pt-8 pb-7 overflow-hidden hero-bg">
+        <div className="relative flex flex-wrap items-center gap-5">
+          <span className="grid place-items-center w-20 h-20 rounded-3xl bg-teal text-ink shadow-xl level-pop shrink-0"><span className="font-display font-extrabold text-[30px] leading-none">+${d.pts}</span></span>
+          <div className="min-w-0 flex-1">
+            <p className="font-mono text-[11.5px] uppercase tracking-[.16em] text-teal">${isRep ? 'Réplica en tu contexto' : 'Publicación'} · puntos de prosumo</p>
+            <h2 className="font-display text-[clamp(1.5rem,4vw,2rem)] font-extrabold leading-tight mt-1 balance">${isRep ? '¡Gracias por cocrear!' : '¡Gracias por compartir!'}</h2>
+            <p className="mt-1 text-white/75 text-[15px]">${isRep ? 'Llevaste la idea de otro profe a tu aula y contaste cómo fue. Así crece el conocimiento de todos.' : 'Tu experiencia ya puede inspirar a otro profe que está buscando lo mismo que tú.'}</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="p-6 sm:p-8 grid gap-6">
+        <section>
+          <div className="flex flex-wrap items-end justify-between gap-2">
+            <p className="text-ink"><span className="font-display text-[34px] font-extrabold tabular-nums leading-none">${fmtPts(d.after)}</span> <span className="text-mute font-bold">puntos</span></p>
+            ${nxt ? html`<p className="text-[14px] text-mute">Meta: <strong className="text-ink tabular-nums">${fmtPts(nxt.min)}</strong> · nivel ${nxt.n}</p>` : html`<${LevelBadge} n=${3} size="md" />`}
+          </div>
+          ${nxt && html`<div className="mt-3 relative h-4 rounded-full bg-ink/[.07] overflow-hidden" role="progressbar" aria-valuemin=${from} aria-valuemax=${nxt.min} aria-valuenow=${d.after} aria-label=${'Progreso hacia el nivel ' + nxt.n}>
+              <div className="absolute inset-y-0 left-0 rounded-full" style=${{ width: pctBefore + '%', background: nxt.color, opacity: .55 }}></div>
+              <div className="absolute inset-y-0 rounded-r-full earned-grow" style=${{ left: pctBefore + '%', width: Math.max(1.5, pctAfter - pctBefore) + '%', background: nxt.color }}></div>
+            </div>
+            <div className="mt-1.5 flex justify-between text-[12px] text-mute tabular-nums"><span>${fmtPts(from)}</span><span>${fmtPts(nxt.min)}</span></div>
+            <p className="mt-3 text-[16px] text-ink leading-snug">Estás a <strong className="tabular-nums">${fmtPts(left)} ${left === 1 ? 'punto' : 'puntos'}</strong> del nivel ${nxt.n}, <strong>${nxt.name}</strong>.</p>
+            <p className="mt-1 text-[14px] text-mute">Lo logras con <strong className="text-ink">${nReplicas} ${nReplicas === 1 ? 'réplica' : 'réplicas'} más</strong> de experiencias de otros profes, o con <strong className="text-ink">${nPubs} ${nPubs === 1 ? 'publicación' : 'publicaciones'} más</strong>.</p>`}
+          ${!nxt && html`<p className="mt-3 text-[16px] text-ink">Ya desbloqueaste todos los niveles de KURIOSITY. Gracias por mantener viva la comunidad.</p>`}
+        </section>
+
+        ${nxt && html`<section className="rounded-2xl border p-4 sm:p-5" style=${{ borderColor: nxt.color + '40', background: nxt.color + '0D' }}>
+          <p className="flex items-center gap-2 font-bold text-ink"><span className="grid place-items-center w-8 h-8 rounded-lg text-white" style=${{ background: nxt.color }}><${Icon} name="lock" size=${15} /></span>Si sigues participando, desbloqueas ${nxt.unlock.toLowerCase()}</p>
+          <ul className="mt-3 grid sm:grid-cols-2 gap-2">${nxt.programs.map(([t, u, dur]) => html`<li key=${t} className="rounded-xl bg-white border border-line px-3 py-2"><p className="text-[14px] font-bold text-ink leading-snug">${t}</p><p className="text-[12px] text-mute">${u} · ${dur}</p></li>`)}</ul>
+          ${later.length > 0 && html`<p className="mt-3 text-[13px] text-mute">Y más adelante: ${later.map(l => `${l.unlock.toLowerCase()} (${fmtPts(l.min)} pts)`).join(' y ')}.</p>`}
+        </section>`}
+
+        <${DanielNote}>${isRep ? 'Replicar no es copiar: es probar en tu contexto y contar lo que aprendiste. Esa es la mejor forma de cocrear.' : 'Cada experiencia que cuentas, aunque no haya salido perfecta, le ahorra a otro profe empezar desde cero.'}<//>
+
+        <div className="flex flex-wrap gap-2.5">
+          <button className=${btnP} onClick=${onClose}>Seguir participando <${Icon} name="arrow" size=${16} /></button>
+          <button className=${btnS} onClick=${onSee}><${Icon} name="star" size=${16} /> Ver mis niveles y beneficios</button>
+        </div>
+      </div>
+    </div>`}
+  <//>`;
+}

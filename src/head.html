@@ -55,6 +55,8 @@ details summary::-webkit-details-marker{display:none}
 .cta-pulse.pulse-white{animation-name:ctapulsew}
 @keyframes ctapulsew{0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)}70%{box-shadow:0 0 0 16px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
 @keyframes ctapulse{0%{box-shadow:0 0 0 0 rgba(45,212,191,.65)}70%{box-shadow:0 0 0 16px rgba(45,212,191,0)}100%{box-shadow:0 0 0 0 rgba(45,212,191,0)}}
+.earned-grow{animation:egrow .9s .3s cubic-bezier(.2,.8,.2,1) both;transform-origin:left}
+@keyframes egrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 .level-pop{animation:levelpop .7s cubic-bezier(.2,1.4,.4,1)}
 @keyframes levelpop{0%{transform:scale(.3) rotate(-25deg);opacity:0}100%{transform:none;opacity:1}}
 .guide-halo{animation:halo 2.4s ease-out infinite}

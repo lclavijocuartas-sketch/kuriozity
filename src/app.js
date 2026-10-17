@@ -293,6 +293,7 @@ function App() {
   const [info, setInfo] = useState(false);
   const [justVerified, setJustVerified] = useState(false);
   const [levelUp, setLevelUp] = useState(null);
+  const [earned, setEarned] = useState(null);
 
   const me = db.session ? db.accounts[db.session] : null;
   const ud = me ? { ...emptyUD(), ...(db.user[me.email] || {}) } : emptyUD();
@@ -376,9 +377,10 @@ function App() {
     const pts = POINTS[type];
     const entry = { id: 'pt' + Date.now() + Math.random().toString(36).slice(2, 5), type, pts, label, post: postId, date: new Date().toISOString() };
     updUD(u => ({ ...u, points: [...(u.points || []), entry] }));
-    toast(`+${pts} ${pts === 1 ? 'punto' : 'puntos'} · ${POINT_LABEL[type]}`);
     const lb = levelOf(before), la = levelOf(before + pts);
     if (la > lb) setTimeout(() => setLevelUp(LEVELS[la - 1]), 700);
+    else if (type === 'share') toast(`+${pts} punto · ${POINT_LABEL[type]}`);
+    else setTimeout(() => setEarned({ type, pts, before, after: before + pts }), 650);
   };
 
   const publish = f => {
@@ -409,6 +411,7 @@ function App() {
       <${EventModal} id=${eventId} ctx=${ctx} onClose=${() => setEventId(null)} />
       <${Composer} open=${!!composer} init=${composer} me=${me} posts=${db.posts} onClose=${() => setComposer(null)} onPublish=${publish} />
       <${ShareModal} post=${shareId && db.posts.find(p => p.id === shareId)} onClose=${() => setShareId(null)} toast=${toast} onSocial=${ctx.shareSocial} />
+      <${PointsEarnedModal} data=${earned} onClose=${() => setEarned(null)} onSee=${() => { setEarned(null); ctx.go('perfil'); }} />
       <${LevelUpModal} level=${levelUp} onClose=${() => setLevelUp(null)} onSee=${() => { setLevelUp(null); ctx.go('perfil'); }} />
     </div>`}
     <${PrototypeInfo} open=${info} onClose=${() => setInfo(false)} />
