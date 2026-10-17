@@ -407,10 +407,6 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
           <div className="mt-7 space-y-4 text-[17px] text-white/75 leading-relaxed max-w-[56ch]">
             <p>Una comunidad para docentes que creen que enseñar es mucho más que transmitir conocimientos: es despertar preguntas, inspirar nuevas ideas y formar personas capaces de transformar su mundo.</p>
           </div>
-          <figure className="mt-8 flex items-start gap-4 lp-glass rounded-[22px] p-5 max-w-[56ch]">
-            <${DanielAvatar} size=${56} className="ring-2 ring-white/20" />
-            <figcaption className="text-[15.5px] text-white/80 leading-relaxed"><span className="font-bold text-white">Daniel</span> está ante la misma decisión que muchos docentes: seguir enseñando como siempre o atreverse a transformar su clase. En la comunidad no tiene que decidirlo solo, y tú tampoco.</figcaption>
-          </figure>
           <p className="mt-10 serif text-[clamp(1.7rem,3.6vw,2.6rem)] leading-[1.15] text-white balance">¿Y si el cambio que necesita la educación empezara en tu próxima clase?</p>
           <div className="mt-7 flex flex-wrap items-center gap-4">
             <button onClick=${session ? onEnter : onJoin} className=${btn + ' cta-grad cta-pulse pulse-white text-white font-bold px-6 py-3.5 text-[16px] hover:-translate-y-0.5'}>${session ? 'Ir a la comunidad docente' : 'Quiero transformar mi forma de enseñar'} <${Icon} name="arrow" size=${18} /></button>
