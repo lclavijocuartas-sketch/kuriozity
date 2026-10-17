@@ -6,7 +6,7 @@ function DanielWelcome({ open, name, onGo, onExplore }) {
       <div className="qmarks" aria-hidden="true"><span className="qm qm1">?</span><span className="qm qm4">¿</span></div>
       <div className="relative flex items-center gap-4">
         <${DanielAvatar} size=${84} className="ring-4 ring-white/15 shadow-xl" />
-        <div><p className="font-display text-[24px] font-extrabold leading-tight">Daniel</p><p className="text-white/70 text-[14px]">Docente y miembro de Kuriozity</p></div>
+        <div><p className="font-display text-[24px] font-extrabold leading-tight">Daniel</p><p className="text-white/70 text-[14px]">Docente y miembro de KURIOSITY</p></div>
       </div>
       <h2 className="relative font-display text-[clamp(1.6rem,4.5vw,2.1rem)] font-extrabold mt-6 leading-tight">¡Hola, colega! Soy Daniel.</h2>
     </div>
@@ -37,7 +37,7 @@ function JourneyStrip({ ctx }) {
   ];
   const n = steps.filter(s => s[2]).length;
   return html`<section data-guide="journey" className="rounded-3xl bg-white border border-line p-4 sm:p-5">
-    <div className="flex items-center justify-between gap-3"><p className="font-bold text-ink text-[15px]">Tu recorrido en Kuriozity</p><span className="font-mono text-[13px] text-mute">${n}/5</span></div>
+    <div className="flex items-center justify-between gap-3"><p className="font-bold text-ink text-[15px]">Tu recorrido en KURIOSITY</p><span className="font-mono text-[13px] text-mute">${n}/5</span></div>
     <ol className="mt-3 grid grid-cols-5 gap-1.5 sm:gap-3">
       ${steps.map(([t, d, ok, fn], i) => html`<li key=${t}><button onClick=${fn} className="w-full text-left group" title=${d}>
         <span className=${cx('block h-1.5 rounded-full transition', ok ? 'bg-teal-d' : 'bg-ink/10 group-hover:bg-violet/30')}></span>
@@ -145,7 +145,7 @@ function SearchBox({ ctx, onDone, autoFocus = false }) {
   const Row = ({ icon, t, sub, fn }) => html`<li><button className="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-left hover:bg-mist" onMouseDown=${e => e.preventDefault()} onClick=${() => pick(fn)}><span className="grid place-items-center w-8 h-8 rounded-lg bg-mist text-ink/70 shrink-0"><${Icon} name=${icon} size=${15} /></span><span className="min-w-0"><span className="block text-[14px] font-semibold text-ink truncate">${t}</span><span className="block text-[12px] text-mute truncate">${sub}</span></span></button></li>`;
   return html`<div className="relative w-full">
     <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-mute pointer-events-none"><${Icon} name="search" size=${17} /></span>
-    <label htmlFor="global-search" className="sr-only">Buscar en Kuriozity</label>
+    <label htmlFor="global-search" className="sr-only">Buscar en KURIOSITY</label>
     <input id="global-search" autoFocus=${autoFocus} className=${inputC + ' pl-10 !py-2 !rounded-full !bg-mist focus:!bg-white border-transparent'} placeholder="Buscar recursos, cursos o publicaciones" value=${q} onChange=${e => { setQ(e.target.value); setOpen(true); }} onFocus=${() => setOpen(true)} onBlur=${() => setTimeout(() => setOpen(false), 120)} onKeyDown=${e => { if (e.key === 'Enter' && s) pick(() => ctx.goPost(q)); }} />
     ${open && res && html`<div className="absolute left-0 right-0 top-[calc(100%+6px)] z-50 rounded-2xl bg-white border border-line shadow-xl p-2 max-h-[70vh] overflow-y-auto pop">
       ${total === 0 ? html`<p className="px-3 py-3 text-[14px] text-mute">Sin resultados para “${q}”. Prueba con otra palabra o pregúntale a la comunidad.</p>` : null}

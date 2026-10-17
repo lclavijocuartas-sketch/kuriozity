@@ -1,10 +1,11 @@
-<title>Comunidad Kuriozity</title>
+<title>KURIOSITY</title>
+<meta name="description" content="KURIOSITY: universo transmedia sobre cómo transformar la manera de enseñar. Tres historias, un futuro en juego y una comunidad docente para despertar la curiosidad.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: barra lateral azul noche + lienzo claro con tarjetas; landing con hero oscuro y signos de interrogación.
-   Diseño de un solo tema (claro) por decisión: es la paleta provisional de Kuriozity. */
+/* Layout: landing oscuro y cinematográfico (nodo del universo transmedia) + comunidad docente con barra lateral azul noche y lienzo claro.
+   Cada zona usa un solo tema por decisión: es la paleta provisional de KURIOSITY. */
 :root{
   --ink:#0E1A3C; --ink-2:#1B2A5C; --violet:#6A45F5; --violet-d:#5432D9; --teal:#2DD4BF; --teal-d:#0B7F74;
   --mist:#F3F4FA; --line:#E1E4EF; --mute:#59607E; --sun:#F5B83D; --white:#FFFFFF;
@@ -58,8 +59,42 @@ details summary::-webkit-details-marker{display:none}
 @keyframes levelpop{0%{transform:scale(.3) rotate(-25deg);opacity:0}100%{transform:none;opacity:1}}
 .guide-halo{animation:halo 2.4s ease-out infinite}
 @keyframes halo{0%{transform:scale(.9);opacity:.9}100%{transform:scale(1.35);opacity:0}}
+
+/* ===== Landing v2 · universo KURIOSITY =====
+   Noche profunda + violeta, azul y magenta. Display: Bricolage Grotesque. Énfasis: Instrument Serif cursiva. */
+.lp{--lp-bg:#05061A;--lp-bg2:#0B0D2A;--lp-violet:#7C5CFF;--lp-blue:#3D6BFF;--lp-magenta:#E0409A;--lp-text:#F3F1FF;
+  --lp-serif:"Instrument Serif", "Iowan Old Style", Georgia, serif;background:var(--lp-bg);color:var(--lp-text)}
+.serif{font-family:var(--lp-serif);font-weight:400;font-style:italic;letter-spacing:-.005em}
+.grad-text{background:linear-gradient(92deg,#C9B8FF 0%,#8E6BFF 30%,#E0409A 70%,#FF8AC8 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-aurora{background:
+  radial-gradient(42% 55% at 78% 22%,rgba(124,92,255,.55),transparent 70%),
+  radial-gradient(38% 50% at 18% 78%,rgba(61,107,255,.38),transparent 70%),
+  radial-gradient(30% 40% at 62% 82%,rgba(224,64,154,.42),transparent 70%),
+  radial-gradient(120% 80% at 50% 0%,#0D0F33,#05061A 70%);
+  background-size:140% 140%;animation:aurora 22s ease-in-out infinite alternate}
+@keyframes aurora{0%{background-position:0% 0%}100%{background-position:100% 60%}}
+.hero-horizon{position:absolute;left:0;right:0;bottom:18%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,184,255,.55),rgba(224,64,154,.55),transparent);box-shadow:0 0 30px 4px rgba(124,92,255,.35);pointer-events:none}
+.hero-horizon::after{content:"";position:absolute;inset:0 0 auto;height:120px;transform:translateY(1px);background:repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 1px,transparent 1px 64px);-webkit-mask-image:linear-gradient(#000,transparent);mask-image:linear-gradient(#000,transparent)}
+.rec-dot{box-shadow:0 0 0 0 rgba(224,64,154,.7);animation:rec 1.8s ease-out infinite}
+@keyframes rec{70%{box-shadow:0 0 0 8px rgba(224,64,154,0)}100%{box-shadow:0 0 0 0 rgba(224,64,154,0)}}
+.scroll-cue{animation:cue 1.8s ease-in-out infinite}@keyframes cue{50%{transform:translateY(5px)}}
+.kw-line{color:transparent;-webkit-text-stroke:1px rgba(201,184,255,.13);transition:transform .2s linear}
+.lp-glass{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(10px)}
+.lp-frame{background:#0B0D2A;border:1px solid rgba(255,255,255,.1)}
+.lp-band{background:linear-gradient(180deg,#05061A,#080A24 30%,#080A24 70%,#05061A)}
+.lp-modal{background:#0B0D2A;color:#F3F1FF;min-height:100%}
+.comm-btn{background:linear-gradient(#05061A,#05061A) padding-box,linear-gradient(92deg,#7C5CFF,#E0409A) border-box;border:1.5px solid transparent}
+.comm-btn:hover{background:linear-gradient(92deg,rgba(124,92,255,.25),rgba(224,64,154,.25)) padding-box,linear-gradient(92deg,#7C5CFF,#E0409A) border-box}
+.story-card{border:1px solid rgba(255,255,255,.1);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s,border-color .45s}
+.story-card:hover,.story-card:focus-within{transform:translateY(-6px);border-color:color-mix(in srgb,var(--c1) 60%,transparent);box-shadow:0 30px 60px -30px var(--c1)}
+.story-cta{background:linear-gradient(92deg,var(--c1),var(--c2));box-shadow:0 10px 24px -12px var(--c1)}
+.story-card .story-desc{transition:opacity .4s}
+.edge-flow{stroke-dasharray:7 9;animation:flow 1.8s linear infinite}@keyframes flow{to{stroke-dashoffset:-32}}
+.community-glow{background:radial-gradient(45% 50% at 85% 30%,rgba(61,107,255,.22),transparent 70%),radial-gradient(40% 45% at 10% 80%,rgba(224,64,154,.16),transparent 70%)}
+.qr-ph{width:34px;height:34px;border-radius:4px;background:
+  conic-gradient(from 90deg at 30% 30%,#fff 25%,transparent 0) 0 0/8px 8px,#0B0D2A;outline:3px solid #fff;outline-offset:-3px;opacity:.85}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-.boot{min-height:100vh;display:grid;place-items:center;background:var(--ink);color:#fff;font-family:var(--display);font-size:22px;font-weight:800;letter-spacing:-.01em}
+.boot{min-height:100vh;display:grid;place-items:center;background:#05061A;letter-spacing:.06em!important;color:#fff;font-family:var(--display);font-size:22px;font-weight:800;letter-spacing:-.01em}
 .boot span{color:var(--teal)}
 </style>
 <script src="https://cdn.tailwindcss.com/3.4.17"></script>
@@ -83,4 +118,4 @@ tailwind.config = {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/htm@3.1.1/dist/htm.umd.js"></script>
-<div id="root"><div class="boot">kurio<span>?</span>ity</div></div>
+<div id="root"><div class="boot">KURIO<span>?</span>ITY</div></div>

@@ -86,12 +86,12 @@ function Avatar({ person, size = 40, className = '' }) {
 }
 
 function Logo({ light = false, onClick, small = false }) {
-  return html`<button type="button" onClick=${onClick} className="flex items-center gap-2.5 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal" aria-label="Kuriozity">
+  return html`<button type="button" onClick=${onClick} className="flex items-center gap-2.5 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal" aria-label="KURIOSITY, ir al inicio">
     <span className=${cx('relative grid place-items-center rounded-[11px] bg-gradient-to-br from-violet to-teal', small ? 'w-8 h-8' : 'w-9 h-9')}>
       <span className="font-display font-extrabold text-white text-[20px] leading-none -mt-0.5">?</span>
       <span className=${cx('absolute -right-1 -top-1 w-3 h-3 rounded-full bg-sun ring-2', light ? 'ring-ink' : 'ring-white')}></span>
     </span>
-    <span className=${cx('font-display font-extrabold tracking-tight', small ? 'text-[19px]' : 'text-[21px]', light ? 'text-white' : 'text-ink')}>kuriozity</span>
+    <span className=${cx('font-display font-extrabold tracking-[.04em]', small ? 'text-[17px]' : 'text-[19px]', light ? 'text-white' : 'text-ink')}>KURIOSITY</span>
   </button>`;
 }
 

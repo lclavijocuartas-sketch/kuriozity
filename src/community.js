@@ -160,7 +160,7 @@ function ShareModal({ post, onClose, toast, onSocial }) {
   useEffect(() => { setSel([]); setMsg(''); }, [post && post.id]);
   const people = ['daniel', 'marcela', 'jhon', 'paola', 'camilo', 'luz', 'andres'];
   const copy = async () => {
-    const link = 'kuriozity.co/comunidad/' + (post ? post.id : '');
+    const link = 'kuriosity.co/comunidad/' + (post ? post.id : '');
     try { await navigator.clipboard.writeText(link); toast('Enlace interno copiado.'); } catch (e) { toast('Enlace: ' + link, 'info'); }
   };
   return html`<${Modal} open=${!!post} onClose=${onClose} size="max-w-md" label="Compartir publicación">
@@ -170,7 +170,7 @@ function ShareModal({ post, onClose, toast, onSocial }) {
       <p className="mt-3 text-[13px] font-bold text-ink flex items-center gap-2">En redes sociales <span className="inline-flex items-center gap-1 rounded-full bg-teal-soft text-teal-d px-2 py-0.5 text-[11.5px]"><${Icon} name="star" size=${11} fill="currentColor" />+${POINTS.share} pt · máx. ${SHARE_DAILY_MAX} al día</span></p>
       <div className="mt-2 grid grid-cols-4 gap-2">${[['WhatsApp', '#1FA855'], ['Facebook', '#1877F2'], ['LinkedIn', '#0A66C2'], ['X', '#0E1A3C']].map(([n, c]) => html`<button key=${n} className="rounded-xl border border-line py-2.5 text-[12.5px] font-bold text-ink hover:bg-mist transition flex flex-col items-center gap-1" onClick=${() => { onSocial(post, n); onClose(); }}><span className="grid place-items-center w-8 h-8 rounded-full text-white font-display text-[13px]" style=${{ background: c }}>${n[0]}</span>${n}</button>`)}</div>
       <p className="mt-1.5 text-[12px] text-mute">Simulado: no se publica nada en tus redes.</p>
-      <p className="mt-5 text-[13px] font-bold text-ink">Con colegas de Kuriozity</p>
+      <p className="mt-5 text-[13px] font-bold text-ink">Con colegas de KURIOSITY</p>
       <p className="text-mute text-[14px] mt-1 line-clamp-2">${post.title}</p>
       <ul className="mt-4 grid gap-1">${people.map(id => { const p = T[id]; const on = sel.includes(id); return html`<li key=${id}><button className=${cx('w-full flex items-center gap-3 rounded-xl px-2 py-2 text-left transition', on ? 'bg-violet-soft' : 'hover:bg-mist')} onClick=${() => setSel(on ? sel.filter(x => x !== id) : [...sel, id])} aria-pressed=${on}>
         <${Avatar} person=${p} size=${34} /><span className="min-w-0"><span className="block font-bold text-[14px] text-ink">${p.name}</span><span className="block text-[12.5px] text-mute truncate">${p.area} · ${p.city}</span></span>
@@ -200,7 +200,7 @@ function Community({ ctx, initialQuery = '' }) {
   }, [posts, cat, sort, q]);
   const counts = useMemo(() => Object.fromEntries(CATS.map(c => [c, posts.filter(p => p.cat === c).length])), [posts]);
   return html`<div>
-    <${PageHead} eyebrow="El corazón de Kuriozity" title="Comunidad" desc="Experiencias, preguntas e ideas de docentes de todo el país. Lo que compartes aquí se convierte en punto de partida para otros profes."
+    <${PageHead} eyebrow="El corazón de KURIOSITY" title="Comunidad" desc="Experiencias, preguntas e ideas de docentes de todo el país. Lo que compartes aquí se convierte en punto de partida para otros profes."
       action=${html`<button className=${btnP} onClick=${() => openComposer({})}><${Icon} name="plus" size=${17} /> Compartir una experiencia</button>`} />
     <${DanielTip} section="comunidad" />
     <div className="grid xl:grid-cols-[1fr_300px] gap-6 items-start">

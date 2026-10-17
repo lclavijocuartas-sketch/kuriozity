@@ -57,7 +57,7 @@ function PointsPanel({ ctx }) {
           ${nxt ? html`<p className="text-[14px] text-white/80">Próximo: <strong className="text-white">nivel ${nxt.n} · ${nxt.name}</strong>, desbloquea ${nxt.unlock.toLowerCase()}</p>
             <div className="mt-2 h-3 rounded-full bg-white/15 overflow-hidden"><div className="h-full rounded-full bg-teal transition-all duration-700" style=${{ width: pct + '%' }}></div></div>
             <p className="mt-1.5 text-[13px] text-white/65 tabular-nums">${fmtPts(pts)} de ${fmtPts(nxt.min)} puntos · te faltan ${fmtPts(nxt.min - pts)}</p>`
-          : html`<p className="text-[15px] text-white/85">Alcanzaste el nivel más alto de Kuriozity.</p>`}
+          : html`<p className="text-[15px] text-white/85">Alcanzaste el nivel más alto de KURIOSITY.</p>`}
           <p className="mt-3 text-[13px] text-white/70">Replicar una experiencia de otro profe en tu aula <strong className="text-white">+${POINTS.replicate}</strong> · Publicar una experiencia <strong className="text-white">+${POINTS.publish}</strong> · Compartir en redes <strong className="text-white">+${POINTS.share}</strong> (máx. ${SHARE_DAILY_MAX} al día)</p>
         </div>
       </div>

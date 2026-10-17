@@ -1,12 +1,13 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body>
-<title>Comunidad Kuriozity</title>
+<title>KURIOSITY</title>
+<meta name="description" content="KURIOSITY: universo transmedia sobre cómo transformar la manera de enseñar. Tres historias, un futuro en juego y una comunidad docente para despertar la curiosidad.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: barra lateral azul noche + lienzo claro con tarjetas; landing con hero oscuro y signos de interrogación.
-   Diseño de un solo tema (claro) por decisión: es la paleta provisional de Kuriozity. */
+/* Layout: landing oscuro y cinematográfico (nodo del universo transmedia) + comunidad docente con barra lateral azul noche y lienzo claro.
+   Cada zona usa un solo tema por decisión: es la paleta provisional de KURIOSITY. */
 :root{
   --ink:#0E1A3C; --ink-2:#1B2A5C; --violet:#6A45F5; --violet-d:#5432D9; --teal:#2DD4BF; --teal-d:#0B7F74;
   --mist:#F3F4FA; --line:#E1E4EF; --mute:#59607E; --sun:#F5B83D; --white:#FFFFFF;
@@ -60,8 +61,42 @@ details summary::-webkit-details-marker{display:none}
 @keyframes levelpop{0%{transform:scale(.3) rotate(-25deg);opacity:0}100%{transform:none;opacity:1}}
 .guide-halo{animation:halo 2.4s ease-out infinite}
 @keyframes halo{0%{transform:scale(.9);opacity:.9}100%{transform:scale(1.35);opacity:0}}
+
+/* ===== Landing v2 · universo KURIOSITY =====
+   Noche profunda + violeta, azul y magenta. Display: Bricolage Grotesque. Énfasis: Instrument Serif cursiva. */
+.lp{--lp-bg:#05061A;--lp-bg2:#0B0D2A;--lp-violet:#7C5CFF;--lp-blue:#3D6BFF;--lp-magenta:#E0409A;--lp-text:#F3F1FF;
+  --lp-serif:"Instrument Serif", "Iowan Old Style", Georgia, serif;background:var(--lp-bg);color:var(--lp-text)}
+.serif{font-family:var(--lp-serif);font-weight:400;font-style:italic;letter-spacing:-.005em}
+.grad-text{background:linear-gradient(92deg,#C9B8FF 0%,#8E6BFF 30%,#E0409A 70%,#FF8AC8 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-aurora{background:
+  radial-gradient(42% 55% at 78% 22%,rgba(124,92,255,.55),transparent 70%),
+  radial-gradient(38% 50% at 18% 78%,rgba(61,107,255,.38),transparent 70%),
+  radial-gradient(30% 40% at 62% 82%,rgba(224,64,154,.42),transparent 70%),
+  radial-gradient(120% 80% at 50% 0%,#0D0F33,#05061A 70%);
+  background-size:140% 140%;animation:aurora 22s ease-in-out infinite alternate}
+@keyframes aurora{0%{background-position:0% 0%}100%{background-position:100% 60%}}
+.hero-horizon{position:absolute;left:0;right:0;bottom:18%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,184,255,.55),rgba(224,64,154,.55),transparent);box-shadow:0 0 30px 4px rgba(124,92,255,.35);pointer-events:none}
+.hero-horizon::after{content:"";position:absolute;inset:0 0 auto;height:120px;transform:translateY(1px);background:repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 1px,transparent 1px 64px);-webkit-mask-image:linear-gradient(#000,transparent);mask-image:linear-gradient(#000,transparent)}
+.rec-dot{box-shadow:0 0 0 0 rgba(224,64,154,.7);animation:rec 1.8s ease-out infinite}
+@keyframes rec{70%{box-shadow:0 0 0 8px rgba(224,64,154,0)}100%{box-shadow:0 0 0 0 rgba(224,64,154,0)}}
+.scroll-cue{animation:cue 1.8s ease-in-out infinite}@keyframes cue{50%{transform:translateY(5px)}}
+.kw-line{color:transparent;-webkit-text-stroke:1px rgba(201,184,255,.13);transition:transform .2s linear}
+.lp-glass{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(10px)}
+.lp-frame{background:#0B0D2A;border:1px solid rgba(255,255,255,.1)}
+.lp-band{background:linear-gradient(180deg,#05061A,#080A24 30%,#080A24 70%,#05061A)}
+.lp-modal{background:#0B0D2A;color:#F3F1FF;min-height:100%}
+.comm-btn{background:linear-gradient(#05061A,#05061A) padding-box,linear-gradient(92deg,#7C5CFF,#E0409A) border-box;border:1.5px solid transparent}
+.comm-btn:hover{background:linear-gradient(92deg,rgba(124,92,255,.25),rgba(224,64,154,.25)) padding-box,linear-gradient(92deg,#7C5CFF,#E0409A) border-box}
+.story-card{border:1px solid rgba(255,255,255,.1);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s,border-color .45s}
+.story-card:hover,.story-card:focus-within{transform:translateY(-6px);border-color:color-mix(in srgb,var(--c1) 60%,transparent);box-shadow:0 30px 60px -30px var(--c1)}
+.story-cta{background:linear-gradient(92deg,var(--c1),var(--c2));box-shadow:0 10px 24px -12px var(--c1)}
+.story-card .story-desc{transition:opacity .4s}
+.edge-flow{stroke-dasharray:7 9;animation:flow 1.8s linear infinite}@keyframes flow{to{stroke-dashoffset:-32}}
+.community-glow{background:radial-gradient(45% 50% at 85% 30%,rgba(61,107,255,.22),transparent 70%),radial-gradient(40% 45% at 10% 80%,rgba(224,64,154,.16),transparent 70%)}
+.qr-ph{width:34px;height:34px;border-radius:4px;background:
+  conic-gradient(from 90deg at 30% 30%,#fff 25%,transparent 0) 0 0/8px 8px,#0B0D2A;outline:3px solid #fff;outline-offset:-3px;opacity:.85}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-.boot{min-height:100vh;display:grid;place-items:center;background:var(--ink);color:#fff;font-family:var(--display);font-size:22px;font-weight:800;letter-spacing:-.01em}
+.boot{min-height:100vh;display:grid;place-items:center;background:#05061A;letter-spacing:.06em!important;color:#fff;font-family:var(--display);font-size:22px;font-weight:800;letter-spacing:-.01em}
 .boot span{color:var(--teal)}
 </style>
 <script src="https://cdn.tailwindcss.com/3.4.17"></script>
@@ -85,7 +120,7 @@ tailwind.config = {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/htm@3.1.1/dist/htm.umd.js"></script>
-<div id="root"><div class="boot">kurio<span>?</span>ity</div></div>
+<div id="root"><div class="boot">KURIO<span>?</span>ITY</div></div>
 <script>
 /* ===================== DATOS DE DEMOSTRACIÓN ===================== */
 const AREAS = ['Lengua castellana','Matemáticas','Ciencias naturales','Ciencias sociales','Tecnología e informática','Transversales'];
@@ -187,13 +222,13 @@ const COURSE_BY_ID = Object.fromEntries(COURSES.map(c => [c.id, c]));
 
 const EVENTS = [
   {id:'e1', name:'Encuentro de docentes que preguntan', date:'2026-10-17', place:'Medellín · sede por confirmar', loc:'Medellín', mode:'Presencial', org:'Colectivo Aula Abierta (ficticio)', desc:'Una mañana para compartir experiencias de aula que empezaron con una pregunta. Mesas de conversación por área y un espacio para estudiantes invitados.', cat:'Innovación pedagógica'},
-  {id:'e2', name:'Taller virtual: preguntas que encienden la clase', date:'2026-10-24', place:'En línea', loc:'Virtual', mode:'Virtual', org:'Comunidad Kuriozity', desc:'Dos horas prácticas para transformar objetivos de clase en preguntas detonantes. Con Daniel y docentes de la comunidad.', cat:'Pensamiento crítico'},
+  {id:'e2', name:'Taller virtual: preguntas que encienden la clase', date:'2026-10-24', place:'En línea', loc:'Virtual', mode:'Virtual', org:'Comunidad KURIOSITY', desc:'Dos horas prácticas para transformar objetivos de clase en preguntas detonantes. Con Daniel y docentes de la comunidad.', cat:'Pensamiento crítico'},
   {id:'e3', name:'Feria de experiencias pedagógicas del Valle de Aburrá', date:'2026-11-06', place:'Área metropolitana de Medellín', loc:'Medellín', mode:'Presencial', org:'Red de maestros investigadores (ficticia)', desc:'Exposición de proyectos de aula de instituciones oficiales y privadas. Convocatoria abierta para presentar experiencias.', cat:'Experiencias de aula'},
   {id:'e4', name:'Foro nacional de lectura y escritura escolar', date:'2026-11-13', place:'Bogotá', loc:'Colombia', mode:'Híbrido', org:'Alianza por la lectura (ficticia)', desc:'Paneles y talleres sobre bibliotecas escolares, clubes de lectura y escritura creativa en secundaria.', cat:'Promoción de la lectura'},
   {id:'e5', name:'Hackatón docente de recursos abiertos', date:'2026-11-21', place:'Cali', loc:'Colombia', mode:'Presencial', org:'Laboratorio de educación abierta (ficticio)', desc:'Equipos interdisciplinarios crean recursos educativos abiertos en 24 horas. No se necesita saber programar.', cat:'Tecnología'},
   {id:'e6', name:'Congreso iberoamericano de innovación educativa', date:'2026-11-26', place:'Ciudad de México', loc:'Internacional', mode:'Híbrido', org:'Consorcio iberoamericano (ficticio)', desc:'Conferencias sobre metodologías activas, evaluación y tecnología con experiencias de diez países.', cat:'Innovación pedagógica'},
-  {id:'e7', name:'Webinar: IA y evaluación en secundaria', date:'2026-12-03', place:'En línea', loc:'Virtual', mode:'Virtual', org:'Comunidad Kuriozity', desc:'Conversación abierta sobre lo que funciona y lo que no al usar IA para retroalimentar. Trae tus preguntas.', cat:'Tecnología'},
-  {id:'e8', name:'Laboratorio de narrativas transmedia para el aula', date:'2027-01-29', place:'Medellín · sede por confirmar', loc:'Medellín', mode:'Presencial', org:'Kuriozity', desc:'Taller para diseñar una historia que se cuente en varios formatos con tus estudiantes: audio, cómic y redes.', cat:'Narrativas'},
+  {id:'e7', name:'Webinar: IA y evaluación en secundaria', date:'2026-12-03', place:'En línea', loc:'Virtual', mode:'Virtual', org:'Comunidad KURIOSITY', desc:'Conversación abierta sobre lo que funciona y lo que no al usar IA para retroalimentar. Trae tus preguntas.', cat:'Tecnología'},
+  {id:'e8', name:'Laboratorio de narrativas transmedia para el aula', date:'2027-01-29', place:'Medellín · sede por confirmar', loc:'Medellín', mode:'Presencial', org:'KURIOSITY', desc:'Taller para diseñar una historia que se cuente en varios formatos con tus estudiantes: audio, cómic y redes.', cat:'Narrativas'},
   {id:'e9', name:'Cumbre latinoamericana de educación y tecnología', date:'2027-02-18', place:'Santiago de Chile', loc:'Internacional', mode:'Virtual', org:'Red latinoamericana (ficticia)', desc:'Tres días de charlas transmitidas en vivo sobre conectividad, IA y equidad en la escuela.', cat:'Tecnología'},
   {id:'e10', name:'Semana de la ciencia escolar', date:'2027-03-10', place:'Barranquilla', loc:'Colombia', mode:'Presencial', org:'Colectivo ciencia en el aula (ficticio)', desc:'Muestra de proyectos de investigación escolar en ciencias naturales y talleres para docentes.', cat:'Ciencias'},
 ];
@@ -239,7 +274,7 @@ const GUIDES = {
   inicio: [
     { target: ['nav', 'mnav'], title: 'Este es tu mapa', text: 'Desde aquí llegas a recursos, cursos, comunidad, eventos, tus guardados y tu perfil. Siempre puedes volver al inicio desde el logo.' },
     { target: ['quick'], title: 'Atajos a lo principal', text: 'Estas tarjetas te llevan directo a cada sección. Los números cambian a medida que la comunidad comparte.' },
-    { target: ['journey'], title: 'Tu recorrido', text: 'Descubrir, aprender, aplicar, compartir y cocrear. Cada paso se marca cuando lo das. No es una carrera: es el camino que propone Kuriozity.' },
+    { target: ['journey'], title: 'Tu recorrido', text: 'Descubrir, aprender, aplicar, compartir y cocrear. Cada paso se marca cuando lo das. No es una carrera: es el camino que propone KURIOSITY.' },
     { target: ['compose'], title: 'Cuenta lo que pasó en tu aula', text: 'Aquí compartes una experiencia o haces una pregunta. Lo que más ayuda a otros profes es el proceso: qué intentaste y qué aprendieron tus estudiantes.' },
     { target: ['points'], title: 'Tus puntos de prosumo', text: 'Cada experiencia que compartes suma puntos: replicar la idea de otro profe en tu aula vale 5, publicar vale 3 y compartir en redes vale 1. Los niveles desbloquean diplomados, especializaciones y maestrías en convenio con universidades.' },
     { target: ['side'], title: 'Hecho para tus grados', text: 'A la derecha te muestro recursos, cursos y eventos según los grados y áreas que elegiste al registrarte.' },
@@ -419,12 +454,12 @@ function Avatar({ person, size = 40, className = '' }) {
 }
 
 function Logo({ light = false, onClick, small = false }) {
-  return html`<button type="button" onClick=${onClick} className="flex items-center gap-2.5 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal" aria-label="Kuriozity">
+  return html`<button type="button" onClick=${onClick} className="flex items-center gap-2.5 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal" aria-label="KURIOSITY, ir al inicio">
     <span className=${cx('relative grid place-items-center rounded-[11px] bg-gradient-to-br from-violet to-teal', small ? 'w-8 h-8' : 'w-9 h-9')}>
       <span className="font-display font-extrabold text-white text-[20px] leading-none -mt-0.5">?</span>
       <span className=${cx('absolute -right-1 -top-1 w-3 h-3 rounded-full bg-sun ring-2', light ? 'ring-ink' : 'ring-white')}></span>
     </span>
-    <span className=${cx('font-display font-extrabold tracking-tight', small ? 'text-[19px]' : 'text-[21px]', light ? 'text-white' : 'text-ink')}>kuriozity</span>
+    <span className=${cx('font-display font-extrabold tracking-[.04em]', small ? 'text-[17px]' : 'text-[19px]', light ? 'text-white' : 'text-ink')}>KURIOSITY</span>
   </button>`;
 }
 
@@ -648,219 +683,462 @@ function PrototypeInfo({ open, onClose }) {
     </div>
   <//>`;
 }
-/* ===================== PÁGINA PÚBLICA ===================== */
-function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
-  const [story, setStory] = useState(null);
-  const go = id => { const el = document.getElementById(id); el && el.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
-  const links = [['daniel', 'Daniel'], ['universo', 'El universo'], ['historias', 'Historias'], ['comunidad', 'Comunidad docente']];
-  const s = story && STORIES.find(x => x.id === story);
-  return html`<div className="bg-white">
-    <header className="fixed inset-x-0 top-0 pt-[env(safe-area-inset-top,0px)] z-40 bg-ink/95 backdrop-blur border-b border-white/10 shadow-[0_8px_24px_-16px_rgba(0,0,0,.6)]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
-        <${Logo} light onClick=${() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
-        <nav className="hidden md:flex items-center gap-1 text-white/80 text-[15px]" aria-label="Menú principal">
-          ${links.map(([id, l]) => html`<button key=${id} onClick=${() => go(id)} className="px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition">${l}</button>`)}
-        </nav>
-        <div className="flex items-center gap-2">
-          <button className=${btn + ' cta-grad cta-pulse pulse-white text-white font-bold px-4 py-2 text-[14.5px] whitespace-nowrap hover:-translate-y-0.5'} onClick=${session ? onEnter : onLogin}>${session ? 'Ir a la comunidad' : 'Ingresa a la comunidad'} <${Icon} name="arrow" size=${16} /></button>
-        </div>
-      </div>
-      <nav className="md:hidden flex gap-1 overflow-x-auto px-3 pb-2 -mt-1 text-white/80 text-[14px] no-scrollbar" aria-label="Menú principal">
-        ${links.map(([id, l]) => html`<button key=${id} onClick=${() => go(id)} className="px-3 py-1.5 rounded-full bg-white/[.07] whitespace-nowrap">${l}</button>`)}
-      </nav>
-    </header>
-    <div className="h-[102px] md:h-16 bg-ink" aria-hidden="true"></div>
+/* ===================== LANDING KURIOSITY (v2) =====================
+   Nodo central del universo transmedia: hero, conflicto, tres historias,
+   mapa del universo, invitación a la comunidad docente y footer. */
 
-    <section className="relative overflow-hidden bg-ink text-white hero-bg">
-      <div className="qmarks" aria-hidden="true">${['?', '¿', '?', '?', '¿'].map((q, i) => html`<span key=${i} className=${'qm qm' + i}>${q}</span>`)}</div>
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-24 grid lg:grid-cols-[1.12fr_.88fr] gap-12 items-center">
-        <div>
-          <p className="font-mono text-[12px] uppercase tracking-[.2em] text-teal">Experiencia transmedia · Colombia</p>
-          <h1 className="font-display font-extrabold text-[clamp(2.35rem,6.2vw,4.5rem)] leading-[1.02] tracking-[-.02em] mt-4 balance">El futuro de la educación comienza con <span className="text-teal">una pregunta</span>.</h1>
-          <p className="mt-6 text-[18px] leading-relaxed text-white/80 max-w-xl">¿Y si recuperar la curiosidad fuera el primer paso para transformar la manera en que aprendemos? Kuriozity es una experiencia transmedia que conecta historias, preguntas y personas que creen en otras formas de enseñar y aprender.</p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <button className=${btn + ' cta-grad cta-pulse pulse-white text-white font-bold px-5 py-3 text-[16px] hover:-translate-y-0.5'} onClick=${session ? onEnter : onJoin}>Únete a la comunidad docente <${Icon} name="arrow" size=${18} /></button>
-            <button className=${btn + ' border border-white/25 text-white hover:bg-white/10 px-5 py-3 text-[16px]'} onClick=${() => go('universo')}>Conoce Kuriozity</button>
-          </div>
-          <p className="mt-7 flex items-center gap-2 text-white/60 text-[14px]"><span className="w-8 h-px bg-white/30"></span>Transformemos el aula juntos.</p>
-        </div>
-        <div className="relative mx-auto w-full max-w-[420px]">
-          <div className="rounded-[28px] bg-white/[.07] border border-white/15 p-5 backdrop-blur-md shadow-2xl rotate-[-1.5deg]">
-            <div className="flex items-center justify-between">
-              <span className="font-mono text-[11px] uppercase tracking-[.16em] text-white/60">Serie · Ep. 1</span>
-              <span className="inline-flex items-center gap-1 text-[12px] text-teal"><span className="w-1.5 h-1.5 rounded-full bg-teal pulse"></span> Próximamente</span>
-            </div>
-            <div className="mt-4 flex items-center gap-4">
-              <${DanielAvatar} size=${76} />
-              <div><p className="font-display text-[22px] font-bold leading-tight">El aula en silencio</p><p className="text-white/65 text-[14px]">Con Daniel, profe de 45 años</p></div>
-            </div>
-            <blockquote className="mt-5 font-display text-[20px] leading-snug text-white/95">“¿En qué momento dejamos de hacer preguntas en clase?”</blockquote>
-            <div className="mt-5 flex items-center gap-3">
-              <span className="grid place-items-center w-10 h-10 rounded-full bg-teal text-ink"><${Icon} name="play" size=${16} fill="currentColor" /></span>
-              <div className="flex-1 h-1.5 rounded-full bg-white/15 overflow-hidden"><div className="h-full w-1/3 bg-teal rounded-full"></div></div>
-              <span className="font-mono text-[12px] text-white/60">04:12</span>
-            </div>
-          </div>
-          <div className="absolute -left-4 -bottom-8 sm:-left-10 rounded-2xl bg-white text-ink px-4 py-3 shadow-xl rotate-[3deg] flex items-center gap-3 max-w-[240px]">
-            <span className="grid place-items-center w-9 h-9 rounded-xl bg-violet-soft text-violet-d"><${Icon} name="mic" size=${18} /></span>
-            <div><p className="text-[12px] text-mute">Pódcast</p><p className="font-bold text-[14px] leading-tight">Preguntas de recreo</p></div>
-          </div>
-          <div className="absolute -right-2 -top-6 sm:-right-6 rounded-2xl bg-sun text-ink px-3.5 py-2.5 shadow-xl rotate-[4deg] font-bold text-[13px] flex items-center gap-2">
-            <${Icon} name="users" size=${16} /> +1.200 docentes
-          </div>
-        </div>
-      </div>
-    </section>
+/* Recursos oficiales: reemplaza null por la URL del archivo cuando esté listo.
+   Las imágenes y videos deben subirse junto al prototipo (no se permiten enlaces a otros sitios para medios). */
+const MEDIA = {
+  heroVideo: null,   // video de fondo sutil del hero (mp4, sin audio)
+  teaser: null,      // teaser audiovisual (mp4)
+  characters: { simon: null, daniel: null, emma: null }, // imágenes oficiales de los personajes
+};
 
-    <section id="por-que" className="scroll-mt-32 md:scroll-mt-20 bg-white border-b border-line">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20 grid lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-14 items-center">
-        <div>
-          <p className="font-mono text-[12px] uppercase tracking-[.18em] text-violet-d">Por qué ahora</p>
-          <h2 className="font-display text-[clamp(1.8rem,4vw,2.6rem)] font-extrabold text-ink leading-[1.08] mt-3 balance">Desde 2015, la comprensión lectora de nuestros estudiantes no ha dejado de caer.</h2>
-          <p className="mt-5 text-[17px] text-ink/75 leading-relaxed max-w-prose">El deterioro empezó antes de la inteligencia artificial y antes de TikTok. El problema no es la herramienta: es la calidad del aprendizaje. Kuriozity apuesta por un aprendizaje significativo, en el que importa el proceso de pensar y no solo la tarea entregada, sin importar si la chispa vino de un libro, un video o la IA.</p>
-        </div>
-        <div className="rounded-[28px] bg-ink text-white p-6 sm:p-8 relative overflow-hidden">
-          <div className="absolute inset-0 hero-bg" aria-hidden="true"></div>
-          <div className="relative">
-            <p className="text-[13px] font-bold text-white/65">Puntaje promedio de Colombia en lectura · PISA</p>
-            <ol className="mt-4 grid grid-cols-4 gap-2" aria-label="Lectura: 425 en 2015, 412 en 2018, 409 en 2022, 399 en 2025">
-              ${[['2015', 425], ['2018', 412], ['2022', 409], ['2025', 399]].map(([y, v], i) => html`<li key=${y} className="flex flex-col">
-                <span className=${cx('font-display font-extrabold leading-none tabular-nums', i === 3 ? 'text-teal text-[clamp(2rem,6vw,2.9rem)]' : 'text-white/85 text-[clamp(1.5rem,4.4vw,2.1rem)]')}>${v}</span>
-                <span className="mt-1.5 font-mono text-[12px] text-white/55">${y}</span>
-              </li>`)}
-            </ol>
-            <p className="mt-2 text-[13.5px] text-white/70">Promedio OCDE 2025: 461</p>
-            <div className="mt-6 pt-5 border-t border-white/15 grid sm:grid-cols-2 gap-4">
-              <p className="text-[15px] leading-snug"><span className="block font-display text-[26px] font-extrabold text-sun">Más de la mitad</span>de los estudiantes no alcanza el nivel básico de lectura.</p>
-              <p className="text-[15px] leading-snug"><span className="block font-display text-[26px] font-extrabold text-sun">7 de cada 10</span>no alcanzan el nivel básico en matemáticas.</p>
-            </div>
-            <p className="mt-5 text-[12px] text-white/50">Fuente: OCDE, resultados PISA 2015 a 2025 para Colombia.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+const CHARACTERS = [
+  { id: 'simon', name: 'Simón', year: '2026', q: '¿Y si el problema no es que no quiera aprender?',
+    desc: 'Simón tiene 14 años y comienza a creer que estudiar no es para él. Entre malas notas, comparaciones y expectativas ajenas, ha perdido algo más importante que sus calificaciones: las ganas de descubrir.',
+    cta: 'Descubre su historia', product: 'reels', where: 'Su historia se cuenta en una serie de reels narrativos.',
+    c1: '#E0409A', c2: '#FF7A59' },
+  { id: 'daniel', name: 'Daniel', year: '2026', q: '¿Y si enseñar diferente pudiera cambiarlo todo?',
+    desc: 'Daniel es un profesor que intenta conectar con una generación que parece hablar otro idioma. Entre las exigencias del sistema y la resistencia al cambio, deberá decidir si sigue enseñando como siempre o se atreve a transformar su clase.',
+    cta: 'Conoce su desafío', product: 'comunidad', where: 'Su historia continúa en la comunidad docente y la plataforma de cocreación.',
+    c1: '#3D6BFF', c2: '#2DD4BF' },
+  { id: 'emma', name: 'Emma', year: '2040', q: '¿Qué pasa cuando tenemos todas las respuestas, pero olvidamos cómo pensar?',
+    desc: 'En un futuro donde la inteligencia artificial parece resolverlo todo, Emma se enfrenta a una pregunta que ninguna tecnología puede responder. Una advertencia sobre lo que podríamos perder si dejamos de cultivar nuestra capacidad de pensar y crear.',
+    cta: 'Viaja al futuro', product: 'podcast', where: 'Su historia se cuenta en el pódcast audiovisual "La última pregunta sobre la Tierra".',
+    c1: '#9B5CFF', c2: '#E040FB' },
+];
+const CHAR_BY_ID = Object.fromEntries(CHARACTERS.map(c => [c.id, c]));
 
-    <section id="daniel" className="scroll-mt-32 md:scroll-mt-20 max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 grid md:grid-cols-[auto_1fr] gap-10 items-center">
-      <div className="relative mx-auto">
-        <${DanielAvatar} size=${220} className="shadow-2xl" />
-        <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-ink text-white px-4 py-1.5 text-[13px] font-bold">Daniel · 45 años · profe</span>
-      </div>
-      <div>
-        <p className="font-mono text-[12px] uppercase tracking-[.18em] text-violet-d">El anfitrión</p>
-        <h2 className="font-display text-[clamp(1.7rem,3.6vw,2.4rem)] font-extrabold text-ink mt-2 balance">Daniel no tiene todas las respuestas. Por eso busca colegas.</h2>
-        <div className="mt-5 space-y-4 text-[17px] text-ink/75 leading-relaxed max-w-prose">
-          <p>Lleva más de veinte años en el aula. Ha visto a sus estudiantes perder el interés, distraerse y conectar más con las redes que con la clase. Algunos colegas le dicen que esta generación es un caso perdido.</p>
-          <p>Él no se resigna. Está convencido de que los docentes pueden transformar la experiencia de aprender cuando comparten lo que saben y prueban cosas nuevas juntos. Fue uno de los primeros en llegar a la comunidad, y ahora recibe a quienes llegan después.</p>
-        </div>
-        <button type="button" onClick=${session ? onEnter : onJoin} className=${btn + ' cta-grad cta-pulse text-white font-bold px-5 py-3 text-[16px] mt-7 hover:-translate-y-0.5'}>${session ? 'Ir a la comunidad' : 'Únete a la comunidad digital'} <${Icon} name="arrow" size=${18} /></button>
-      </div>
-    </section>
+const PRODUCTS = {
+  hub: { name: 'kuriosity.co', kicker: 'El nodo central', tagline: 'Todas las historias pasan por aquí.', icon: 'globe', color: '#F3F1FF',
+    role: 'Aquí llegan quienes vienen de un reel, un póster, el pódcast o una invitación a la comunidad. Desde aquí se descubren las demás historias y las formas de participar.' },
+  podcast: { name: 'Pódcast audiovisual', kicker: 'Emma · 2040', tagline: 'Escucha las preguntas que podrían cambiar nuestro futuro.', icon: 'mic', color: '#B48CFF', char: 'emma',
+    role: 'Presenta el universo de Emma y permite explorar las consecuencias de un mundo que ha dejado de ejercitar su capacidad de pensar.' },
+  reels: { name: 'Reels narrativos', kicker: 'Simón · 2026', tagline: 'Historias breves que dejan grandes preguntas.', icon: 'film', color: '#FF6FB5', char: 'simon',
+    role: 'Permiten acercarse a personajes, conflictos y situaciones relacionadas con la experiencia educativa.' },
+  posters: { name: 'Pósteres interactivos', kicker: 'Puerta de entrada', tagline: 'Una pregunta puede ser el comienzo de todo.', icon: 'image', color: '#FFB86B',
+    role: 'Piezas visuales diseñadas para provocar reflexión y conducir hacia otras experiencias del universo mediante sus llamados a la acción y códigos QR.' },
+  comunidad: { name: 'Comunidad docente', kicker: 'Daniel · 2026', tagline: 'De las preguntas a las acciones.', icon: 'users', color: '#5EEAD4', char: 'daniel',
+    role: 'Un espacio de participación y cocreación donde los docentes pueden descubrir recursos, compartir experiencias y experimentar con nuevas maneras de enseñar.' },
+};
+// Conexiones narrativas: el ciclo futuro → presente → acción → futuro, y la entrada desde los pósteres.
+const UNIVERSE_EDGES = [
+  { from: 'podcast', to: 'reels', label: '2040 advierte lo que Simón vive hoy' },
+  { from: 'reels', to: 'comunidad', label: 'El aula de Simón es el desafío de Daniel' },
+  { from: 'comunidad', to: 'podcast', label: 'Cada clase que cambia, cambia el futuro de Emma' },
+  { from: 'posters', to: 'hub', label: 'Su código QR te trae aquí' },
+];
+const NODE_POS = { hub: [50, 50], reels: [17, 19], podcast: [83, 19], comunidad: [50, 88], posters: [14, 80] };
 
-    <section id="universo" className="scroll-mt-32 md:scroll-mt-20 max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
-      <div className="grid lg:grid-cols-[.9fr_1.1fr] gap-10 lg:gap-16">
-        <div>
-          <p className="font-mono text-[12px] uppercase tracking-[.18em] text-violet-d">El universo Kuriozity</p>
-          <h2 className="font-display text-[clamp(1.8rem,4vw,2.7rem)] font-extrabold text-ink leading-[1.08] mt-3 balance">Una historia que se cuenta en muchos formatos y se termina de escribir en el aula.</h2>
-          <p className="mt-5 text-[17px] text-ink/75 leading-relaxed max-w-prose">Kuriozity cuestiona las prácticas tradicionales de enseñanza y propone otras formas de aprender. Lo hace con una serie, un pódcast, piezas gráficas y una comunidad donde los docentes no solo consumen contenidos: los producen, los reinterpretan y los comparten.</p>
-        </div>
-        <div className="grid sm:grid-cols-2 gap-4">
-          ${[['film', 'Serie audiovisual', 'La vida de Daniel y su clase de 10.º en episodios cortos.'], ['mic', 'Pódcast', 'Conversaciones sobre las preguntas que no caben en el currículo.'], ['image', 'Piezas gráficas', 'Cómics y carteles para llevar las preguntas a los pasillos.'], ['users', 'Comunidad docente', 'El espacio de prosumo: recursos, cursos y experiencias de aula.']].map(([i, t, d], k) => k === 3 ? html`<button key=${t} type="button" onClick=${session ? onEnter : onLogin} className="group text-left rounded-3xl p-5 border border-ink bg-ink text-white transition hover:-translate-y-1 hover:shadow-[0_18px_40px_-16px_rgba(106,69,245,.7)] hover:border-violet focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-teal/50 cta-pulse">
-            <span className="flex items-center justify-between"><span className="grid place-items-center w-11 h-11 rounded-2xl bg-teal text-ink"><${Icon} name=${i} size=${20} /></span><span className="grid place-items-center w-9 h-9 rounded-full bg-white/10 text-white group-hover:bg-teal group-hover:text-ink transition"><${Icon} name="arrow" size=${17} /></span></span>
-            <span className="block font-display text-[19px] font-bold mt-4">${t}</span>
-            <span className="block mt-1.5 text-[15px] leading-snug text-white/75">${d}</span>
-            <span className="mt-3 inline-flex items-center gap-1.5 text-[14px] font-bold text-teal group-hover:underline">${session ? 'Ir a la comunidad' : 'Iniciar sesión'} <${Icon} name="arrow" size=${15} /></span>
-          </button>` : html`<div key=${t} className="rounded-3xl p-5 border transition hover:-translate-y-0.5 bg-mist border-line">
-            <span className="grid place-items-center w-11 h-11 rounded-2xl bg-white text-violet-d"><${Icon} name=${i} size=${20} /></span>
-            <p className="font-display text-[19px] font-bold mt-4">${t}</p>
-            <p className="mt-1.5 text-[15px] leading-snug text-mute">${d}</p>
-          </div>`)}
-        </div>
-      </div>
-      <div className="mt-14 rounded-3xl border border-line p-5 sm:p-7">
-        <p className="text-[13px] font-bold text-mute">El recorrido que propone la comunidad</p>
-        <ol className="mt-4 flex flex-wrap items-center gap-2 sm:gap-3">
-          ${['Descubrir', 'Aprender', 'Aplicar', 'Compartir', 'Cocrear'].map((p, i) => html`<li key=${p} className="flex items-center gap-2 sm:gap-3">
-            <span className="inline-flex items-center gap-2 rounded-full bg-violet-soft px-3.5 py-2 font-display font-bold text-ink text-[15px]"><span className="font-mono text-[11px] text-violet-d">${i + 1}</span>${p}</span>
-            ${i < 4 ? html`<span className="text-mute"><${Icon} name="arrow" size=${16} /></span>` : null}
-          </li>`)}
-        </ol>
-        <button type="button" onClick=${session ? onEnter : onLogin} className=${btn + ' cta-grad cta-pulse text-white font-bold px-5 py-3 text-[16px] mt-6 hover:-translate-y-0.5'}>Ingresa a la comunidad ahora <${Icon} name="arrow" size=${18} /></button>
-      </div>
-    </section>
+/* Avanza de 0 a 1 mientras la sección atraviesa la pantalla (para animaciones de scroll). */
+function useScrollProgress(ref) {
+  const [p, setP] = useState(0);
+  useEffect(() => {
+    let raf = 0;
+    const tick = () => { raf = 0; const el = ref.current; if (!el) return; const r = el.getBoundingClientRect(); const vh = window.innerHeight || 800; setP(Math.max(0, Math.min(1, (vh - r.top) / (vh + r.height)))); };
+    const on = () => { if (!raf) raf = requestAnimationFrame(tick); };
+    tick(); window.addEventListener('scroll', on, { passive: true }); window.addEventListener('resize', on);
+    return () => { window.removeEventListener('scroll', on); window.removeEventListener('resize', on); cancelAnimationFrame(raf); };
+  }, []);
+  return p;
+}
 
-    <section id="historias" className="scroll-mt-32 md:scroll-mt-20 bg-mist border-y border-line">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div><p className="font-mono text-[12px] uppercase tracking-[.18em] text-violet-d">Conoce sus historias</p>
-          <h2 className="font-display text-[clamp(1.7rem,3.6vw,2.4rem)] font-extrabold text-ink mt-2">Cuatro puertas al mismo relato</h2></div>
-          <p className="text-mute text-[14px] max-w-xs">Piezas en desarrollo. Las sinopsis son de demostración.</p>
-        </div>
-        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          ${STORIES.map((st, i) => html`<button key=${st.id} onClick=${() => setStory(st.id)} className="group text-left rounded-3xl bg-white border border-line overflow-hidden hover:shadow-lg hover:-translate-y-1 transition flex flex-col">
-            <div className=${cx('relative h-36 story-cover', 'sc' + i)}>
-              <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-2.5 py-1 text-[12px] font-bold text-ink"><${Icon} name=${st.icon} size=${13} />${st.format}</span>
-              <span className="absolute right-4 bottom-1 font-display font-extrabold text-[84px] leading-none text-white/25">${i % 2 ? '¿' : '?'}</span>
-            </div>
-            <div className="p-5 flex-1 flex flex-col">
-              <p className="font-mono text-[11px] uppercase tracking-[.14em] text-mute">${st.label}</p>
-              <p className="font-display text-[19px] font-bold text-ink mt-1 leading-tight">${st.title}</p>
-              <p className="text-[14px] text-mute mt-2 line-clamp-3">${st.syn}</p>
-              <span className="mt-auto pt-4 inline-flex items-center gap-1 text-[14px] font-bold text-violet-d group-hover:gap-2 transition-all">Ver sinopsis <${Icon} name="chev" size=${15} /></span>
-            </div>
-          </button>`)}
-        </div>
-      </div>
-    </section>
+function Eyebrow({ children, className = '' }) {
+  return html`<p className=${cx('font-mono text-[11.5px] uppercase tracking-[.22em] text-[#B9A6FF]', className)}>${children}</p>`;
+}
 
-
-    <section id="comunidad" className="scroll-mt-32 md:scroll-mt-20 px-4 sm:px-6 pb-16 sm:pb-24">
-      <div className="max-w-6xl mx-auto rounded-[32px] bg-ink text-white overflow-hidden relative cta-bg">
-        <div className="relative grid lg:grid-cols-[1.1fr_.9fr] gap-10 p-7 sm:p-12">
-          <div>
-            <p className="font-mono text-[12px] uppercase tracking-[.18em] text-teal">Comunidad docente</p>
-            <h2 className="font-display text-[clamp(2rem,4.5vw,3.2rem)] font-extrabold leading-[1.04] mt-3">Transformemos el aula juntos.</h2>
-            <p className="mt-4 text-white/75 text-[17px] max-w-lg">Un espacio privado para docentes de secundaria verificados. Encuentra recursos para tus grados, aprende con cursos cortos y comparte lo que pasa en tu aula.</p>
-            <button className=${btnTeal + ' cta-pulse pulse-white mt-7 !px-5 !py-3 text-[16px] hover:-translate-y-0.5'} onClick=${session ? onEnter : onLogin}>${session ? 'Ir a la comunidad' : 'Ingresa a la comunidad ahora'} <${Icon} name="arrow" size=${18} /></button>
-            <p className="mt-4 flex items-center gap-2 text-[13px] text-white/60"><${Icon} name="shield" size=${15} /> Comunidad con docentes verificados. Accede ahora y encuentra recursos para ti.</p>
-          </div>
-          <ul className="grid gap-3 self-center">
-            ${[['book', 'Recursos para el aula', 'Organizados por grado, de 6.º a 11.º'], ['cap', 'Cursos para docentes', 'Metodologías, TIC, IA, lectura y evaluación'], ['users', 'Comunidad', 'Experiencias, preguntas y versiones nuevas de cada actividad'], ['calendar', 'Eventos', 'Agenda de Medellín, Colombia y virtuales']].map(([i, t, d]) => html`<li key=${t} className="flex items-center gap-4 rounded-2xl bg-white/[.06] border border-white/10 p-4">
-              <span className="grid place-items-center w-10 h-10 rounded-xl bg-white/10 text-teal"><${Icon} name=${i} size=${19} /></span>
-              <div><p className="font-bold">${t}</p><p className="text-white/65 text-[14px]">${d}</p></div>
-            </li>`)}
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <footer className="border-t border-line">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 flex flex-wrap items-center justify-between gap-4">
-        <${Logo} small onClick=${() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
-        <p className="text-[13px] text-mute">Prototipo académico · Maestría en Comunicación Transmedia · Contenidos de demostración</p>
-        <${PrototypeBadge} onClick=${onInfo} />
-      </div>
-    </footer>
-
-    <${Modal} open=${!!s} onClose=${() => setStory(null)} size="max-w-lg" label="Historia">
-      ${s && html`<div>
-        <${CloseBtn} onClick=${() => setStory(null)} light />
-        <div className=${cx('relative h-44 story-cover', 'sc' + STORIES.indexOf(s))}>
-          <span className="absolute left-6 bottom-5 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-[13px] font-bold text-ink"><${Icon} name=${s.icon} size=${14} />${s.format} · ${s.label}</span>
-        </div>
-        <div className="p-6 sm:p-8">
-          <h3 className="font-display text-[26px] font-extrabold text-ink leading-tight">${s.title}</h3>
-          <p className="mt-3 text-[16px] text-ink/80 leading-relaxed">${s.syn}</p>
-          <p className="mt-4 text-[13px] text-mute rounded-xl bg-mist px-3 py-2">Pieza del universo narrativo en desarrollo. Contenido de demostración.</p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <button className=${btnP} onClick=${() => { setStory(null); session ? onEnter() : onJoin(); }}>Continuar en la comunidad <${Icon} name="arrow" size=${16} /></button>
-            <button className=${btnS} onClick=${() => setStory(null)}>Cerrar</button>
-          </div>
-        </div>
-      </div>`}
-    <//>
+/* Imagen oficial del personaje o contenedor reservado claramente identificado. */
+function CharacterMedia({ c, className = '', big = false }) {
+  const src = MEDIA.characters[c.id];
+  if (src) return html`<img src=${src} alt=${'Imagen oficial de ' + c.name} className=${cx('absolute inset-0 w-full h-full object-cover', className)} />`;
+  return html`<div className=${cx('absolute inset-0 overflow-hidden', className)} style=${{ background: `radial-gradient(90% 70% at 70% 15%, ${c.c1}55, transparent 60%), radial-gradient(80% 60% at 10% 100%, ${c.c2}40, transparent 60%), #0B0D2A` }}>
+    <span className="absolute -right-4 -bottom-10 font-display font-extrabold leading-none select-none" style=${{ fontSize: big ? 360 : 300, color: c.c1, opacity: .16 }} aria-hidden="true">${c.name[0]}</span>
+    <span className="absolute left-1/2 top-[22%] -translate-x-1/2 inline-flex items-center gap-1.5 whitespace-nowrap max-w-[90%] rounded-full border border-dashed border-white/35 bg-black/25 px-2.5 py-1 font-mono text-[10.5px] uppercase tracking-[.12em] text-white/70"><${Icon} name="image" size=${12} />Imagen oficial · pendiente</span>
   </div>`;
 }
 
+/* ---------- Ventanas: teaser y piezas en producción ---------- */
+function MediaModal({ kind, onClose, onStory }) {
+  const titles = { teaser: 'Teaser de KURIOSITY', podcast: 'La última pregunta sobre la Tierra', reels: 'Reels de Simón', posters: 'Pósteres interactivos' };
+  return html`<${Modal} open=${!!kind} onClose=${onClose} size="max-w-3xl" label=${titles[kind] || 'Contenido'} dark>
+    ${kind && html`<div className="lp-modal">
+      <${CloseBtn} onClick=${onClose} light />
+      <div className="px-5 sm:px-8 pt-7 pb-2">
+        <${Eyebrow}>${kind === 'teaser' ? 'Teaser audiovisual' : kind === 'podcast' ? 'Pódcast audiovisual · Emma · 2040' : kind === 'reels' ? 'Serie de reels · Simón · 2026' : 'Pósteres con código QR'}</${Eyebrow}>
+        <h2 className="font-display text-[clamp(1.5rem,3.6vw,2.1rem)] font-extrabold leading-tight mt-2 pr-10">${titles[kind]}</h2>
+      </div>
+      <div className="p-5 sm:p-8 pt-4">
+        ${kind === 'teaser' && (MEDIA.teaser
+          ? html`<video src=${MEDIA.teaser} controls playsInline className="w-full rounded-2xl bg-black aspect-video"></video>`
+          : html`<div className="relative aspect-video rounded-2xl overflow-hidden lp-frame grid place-items-center text-center">
+              <div className="absolute inset-0 hero-aurora opacity-70" aria-hidden="true"></div>
+              <div className="relative px-6"><span className="inline-grid place-items-center w-16 h-16 rounded-full border border-white/30 bg-white/10"><${Icon} name="play" size=${24} fill="currentColor" /></span>
+              <p className="mt-4 font-display text-[20px] font-bold">El teaser está en producción</p>
+              <p className="mt-1 text-white/65 text-[14.5px] max-w-sm mx-auto">Aquí se reproducirá el teaser oficial cuando esté listo.</p></div>
+            </div>`)}
+        ${kind === 'podcast' && html`<div className="rounded-2xl lp-frame p-5 sm:p-6">
+            <div className="flex items-center gap-4">
+              <span className="grid place-items-center w-20 h-20 rounded-2xl shrink-0" style=${{ background: 'linear-gradient(135deg,#9B5CFF,#E040FB)' }}><${Icon} name="mic" size=${30} /></span>
+              <div className="min-w-0"><p className="font-display text-[19px] font-bold leading-tight">Episodio 1 · por publicar</p><p className="text-white/60 text-[14px]">Protagonizado por Emma, desde 2040</p></div>
+            </div>
+            <div className="mt-5 flex items-center gap-3 opacity-60" aria-hidden="true"><span className="grid place-items-center w-10 h-10 rounded-full bg-white/15"><${Icon} name="play" size=${15} fill="currentColor" /></span><div className="flex-1 h-1.5 rounded-full bg-white/15"></div><span className="font-mono text-[12px]">--:--</span></div>
+            <p className="mt-4 text-[14px] text-white/65">Reproductor de prototipo. Los episodios se incorporarán cuando estén publicados.</p>
+          </div>`}
+        ${kind === 'reels' && html`<div className="flex gap-3 overflow-x-auto no-scrollbar pb-1">${[1, 2, 3].map(n => html`<div key=${n} className="relative shrink-0 w-[150px] sm:w-[180px] aspect-[9/16] rounded-2xl overflow-hidden lp-frame">
+            <div className="absolute inset-0" style=${{ background: `radial-gradient(80% 60% at 50% 20%, #E0409A${n === 2 ? '66' : '40'}, transparent 60%), #0B0D2A` }}></div>
+            <span className="absolute left-3 top-3 font-mono text-[10.5px] uppercase tracking-[.14em] text-white/70">Reel ${n}</span>
+            <span className="absolute inset-0 grid place-items-center"><span className="grid place-items-center w-12 h-12 rounded-full bg-white/15 border border-white/25"><${Icon} name="play" size=${18} fill="currentColor" /></span></span>
+            <span className="absolute left-3 right-3 bottom-3 text-[12px] text-white/70">Por publicar</span>
+          </div>`)}</div>
+          <p className="mt-4 text-[14px] text-white/65">Espacios reservados para la serie de reels de Simón. Se reemplazarán por los videos oficiales.</p>`}
+        ${kind === 'posters' && html`<div className="grid grid-cols-1 sm:grid-cols-3 gap-3">${CHARACTERS.map(c => html`<button key=${c.id} onClick=${() => onStory(c.id)} className="group relative text-left aspect-[3/4] rounded-2xl overflow-hidden lp-frame p-4 flex flex-col hover:-translate-y-1 transition">
+            <div className="absolute inset-0" style=${{ background: `linear-gradient(160deg, ${c.c1}55, transparent 55%), #0B0D2A` }}></div>
+            <span className="relative font-mono text-[10.5px] uppercase tracking-[.14em] text-white/60">Póster · ${c.name}</span>
+            <p className="relative mt-auto serif text-[22px] leading-[1.1]">${c.q}</p>
+            <span className="relative mt-4 flex items-center gap-2"><span className="qr-ph" aria-hidden="true"></span><span className="text-[11.5px] text-white/70 leading-tight">Escanea<br/>kuriosity.co</span></span>
+            <span className="relative mt-3 text-[12.5px] font-bold text-white/85 group-hover:underline">Ir a la historia →</span>
+          </button>`)}</div>
+          <p className="mt-4 text-[14px] text-white/65">Maquetas de prototipo con las preguntas de cada historia. El código QR de cada póster lleva a kuriosity.co.</p>`}
+      </div>
+    </div>`}
+  <//>`;
+}
+
+/* ---------- Historia de cada personaje ---------- */
+function StoryPanel({ id, onClose, onStory, onMedia, onCommunity, session }) {
+  const c = id && CHAR_BY_ID[id];
+  const others = c ? CHARACTERS.filter(x => x.id !== c.id) : [];
+  const prod = c && PRODUCTS[c.product];
+  const action = c && (c.product === 'comunidad'
+    ? html`<button className=${btn + ' cta-grad text-white font-bold px-5 py-3'} onClick=${onCommunity}>${session ? 'Ir a la comunidad docente' : 'Entrar a la comunidad de Daniel'} <${Icon} name="arrow" size=${17} /></button>`
+    : html`<button className=${btn + ' cta-grad text-white font-bold px-5 py-3'} onClick=${() => onMedia(c.product)}><${Icon} name=${prod.icon} size=${17} />${c.product === 'podcast' ? 'Escuchar el pódcast' : 'Ver los reels'}</button>`);
+  return html`<${Modal} open=${!!c} onClose=${onClose} size="max-w-3xl" label=${c ? 'Historia de ' + c.name : 'Historia'} dark>
+    ${c && html`<div className="lp-modal">
+      <${CloseBtn} onClick=${onClose} light />
+      <div className="relative h-56 sm:h-72">
+        <${CharacterMedia} c=${c} big />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0D2A] via-[#0B0D2A]/30 to-transparent"></div>
+        <div className="absolute left-5 sm:left-8 bottom-4">
+          <p className="font-mono text-[13px] tracking-[.2em]" style=${{ color: c.c1 }}>${c.year}</p>
+          <h2 className="font-display text-[clamp(2.2rem,6vw,3.2rem)] font-extrabold leading-none">${c.name}</h2>
+        </div>
+      </div>
+      <div className="p-5 sm:p-8 pt-4">
+        <p className="serif text-[clamp(1.5rem,3.6vw,2rem)] leading-[1.15]">${c.q}</p>
+        <p className="mt-4 text-[16.5px] text-white/75 leading-relaxed max-w-prose">${c.desc}</p>
+        <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1.5 text-[13.5px] text-white/80"><${Icon} name=${prod.icon} size=${15} />${c.where}</p>
+        <div className="mt-6 flex flex-wrap gap-3">${action}</div>
+        <div className="mt-8 pt-6 border-t border-white/10">
+          <p className="text-[13px] font-bold text-white/60">Sigue explorando el universo</p>
+          <div className="mt-3 grid sm:grid-cols-2 gap-3">${others.map(o => html`<button key=${o.id} onClick=${() => onStory(o.id)} className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[.04] p-3 text-left hover:bg-white/[.08] hover:border-white/25 transition">
+            <span className="grid place-items-center w-12 h-12 rounded-xl font-display font-extrabold text-[20px] shrink-0" style=${{ background: `linear-gradient(135deg, ${o.c1}, ${o.c2})` }}>${o.name[0]}</span>
+            <span className="min-w-0"><span className="block font-bold">${o.name} · <span className="font-mono text-[12.5px] font-normal text-white/60">${o.year}</span></span><span className="block text-[13px] text-white/60 line-clamp-2">${o.q}</span></span>
+          </button>`)}</div>
+        </div>
+      </div>
+    </div>`}
+  <//>`;
+}
+
+/* ---------- Fundamentación: ¿Por qué nace KURIOSITY? ---------- */
+function WhyModal({ open, onClose }) {
+  return html`<${Modal} open=${open} onClose=${onClose} size="max-w-2xl" label="¿Por qué nace KURIOSITY?" dark>
+    <div className="lp-modal p-6 sm:p-9">
+      <${CloseBtn} onClick=${onClose} light />
+      <${Eyebrow}>Fundamentación · en construcción</${Eyebrow}>
+      <h2 className="font-display text-[clamp(1.6rem,4vw,2.2rem)] font-extrabold leading-tight mt-2 pr-10">¿Por qué nace KURIOSITY?</h2>
+      <p className="mt-4 text-[16px] text-white/75 leading-relaxed">Las nuevas generaciones aprenden en un mundo distinto, pero muchas prácticas educativas no han cambiado al mismo ritmo. Los resultados de las pruebas internacionales muestran que la comprensión lectora de los estudiantes colombianos viene cayendo desde antes de la llegada de la inteligencia artificial.</p>
+      <div className="mt-6 rounded-2xl lp-frame p-5">
+        <p className="text-[13px] font-bold text-white/65">Puntaje promedio de Colombia en lectura · PISA</p>
+        <ol className="mt-3 grid grid-cols-4 gap-2" aria-label="Lectura: 425 en 2015, 412 en 2018, 409 en 2022, 399 en 2025">
+          ${[['2015', 425], ['2018', 412], ['2022', 409], ['2025', 399]].map(([y, v], i) => html`<li key=${y}><span className=${cx('block font-display font-extrabold tabular-nums leading-none', i === 3 ? 'text-[34px] grad-text' : 'text-[26px] text-white/85')}>${v}</span><span className="block mt-1 font-mono text-[12px] text-white/50">${y}</span></li>`)}
+        </ol>
+        <p className="mt-3 text-[13.5px] text-white/65">En 2025, más de la mitad de los estudiantes no alcanzó el nivel básico de lectura. Promedio de la OCDE en lectura: 461.</p>
+      </div>
+      <p className="mt-6 text-[13px] font-bold text-white/60">Fuentes</p>
+      <ul className="mt-2 grid gap-1.5 text-[14px]">
+        <li><a className="underline decoration-white/30 hover:decoration-white" href="https://www.oecd.org/en/about/programmes/pisa.html" target="_blank" rel="noopener">OCDE · Programa PISA</a></li>
+        <li><a className="underline decoration-white/30 hover:decoration-white" href="https://fundacionexe.org.co/wp-content/uploads/2024/03/Reporte-general-de-resultados-PISA-2022.pdf" target="_blank" rel="noopener">Fundación ExE · Reporte de resultados PISA 2022</a></li>
+        <li><a className="underline decoration-white/30 hover:decoration-white" href="https://www.elcolombiano.com/colombia/educacion/resultados-pisa-2025-colombia-matematicas-lectura-ciencias-computacion-IL40789504" target="_blank" rel="noopener">El Colombiano · Resultados PISA 2025 para Colombia</a></li>
+      </ul>
+      <p className="mt-5 text-[13px] text-white/50">Esta sección se ampliará con la fundamentación académica completa del proyecto.</p>
+    </div>
+  <//>`;
+}
+
+/* ---------- Mapa del universo transmedia ---------- */
+function UniverseMap({ sel, setSel, onAction }) {
+  const related = id => UNIVERSE_EDGES.filter(e => e.from === id || e.to === id);
+  const isLit = e => sel === 'hub' ? true : (e.from === sel || e.to === sel);
+  const spokeLit = id => sel === 'hub' || sel === id;
+  const ids = ['reels', 'podcast', 'comunidad', 'posters'];
+  const P = NODE_POS;
+  const R = id => id === 'hub' ? 58 : 44; // radio del nodo en unidades del viewBox, para que la flecha no quede debajo
+  const curve = (a, b, bend = 0) => {
+    let [x1, y1] = [P[a][0] * 10, P[a][1] * 6.2], [x2, y2] = [P[b][0] * 10, P[b][1] * 6.2];
+    const mx = (x1 + x2) / 2, my = (y1 + y2) / 2, dx = x2 - x1, dy = y2 - y1, L = Math.hypot(dx, dy) || 1;
+    const cx_ = mx - dy / L * bend, cy_ = my + dx / L * bend;
+    const t1 = Math.hypot(cx_ - x1, cy_ - y1) || 1, t2 = Math.hypot(x2 - cx_, y2 - cy_) || 1;
+    x1 += (cx_ - x1) / t1 * R(a); y1 += (cy_ - y1) / t1 * R(a);
+    x2 -= (x2 - cx_) / t2 * R(b); y2 -= (y2 - cy_) / t2 * R(b);
+    return `M${x1},${y1} Q${cx_},${cy_} ${x2},${y2}`;
+  };
+  const labelPos = { 'podcast-reels': [50, 6], 'reels-comunidad': [31, 63], 'comunidad-podcast': [73, 59], 'posters-hub': [22, 70] };
+  return html`<div>
+    <!-- Escritorio: constelación -->
+    <div className="hidden md:block relative w-full aspect-[1000/620] select-none">
+      <svg viewBox="0 0 1000 620" className="absolute inset-0 w-full h-full" aria-hidden="true">
+        <defs>
+          <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#C9B8FF" /></marker>
+          <linearGradient id="cyc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#9B5CFF" /><stop offset=".5" stopColor="#E0409A" /><stop offset="1" stopColor="#3D6BFF" /></linearGradient>
+        </defs>
+        ${ids.map(id => html`<path key=${'s' + id} d=${curve('hub', id)} fill="none" stroke="#FFFFFF" strokeOpacity=${spokeLit(id) ? .28 : .08} strokeWidth="1.2" strokeDasharray="3 7" />`)}
+        ${UNIVERSE_EDGES.filter(e => e.to !== 'hub').map(e => html`<path key=${e.from + e.to} d=${curve(e.from, e.to, e.from === 'podcast' ? -40 : 60)} fill="none" stroke="url(#cyc)" strokeOpacity=${isLit(e) ? .95 : .15} strokeWidth=${isLit(e) ? 2.4 : 1.4} markerEnd="url(#arr)" className="edge-flow" />`)}
+      </svg>
+      ${UNIVERSE_EDGES.map(e => { const [x, y] = labelPos[e.from + '-' + e.to]; return html`<span key=${'l' + e.from} className=${cx('absolute -translate-x-1/2 -translate-y-1/2 max-w-[210px] text-center rounded-full px-3 py-1 text-[12.5px] leading-snug transition', isLit(e) ? 'bg-[#141640] text-white border border-white/20' : 'text-white/30 border border-transparent')} style=${{ left: x + '%', top: y + '%' }}>${e.label}</span>`; })}
+      ${['hub', ...ids].map(id => { const p = PRODUCTS[id]; const on = sel === id; return html`<button key=${id} onClick=${() => setSel(id)} onMouseEnter=${() => setSel(id)} aria-pressed=${on}
+        className=${cx('absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-center group focus-visible:outline-none', id === 'hub' ? 'w-[190px]' : 'w-[170px]')} style=${{ left: P[id][0] + '%', top: P[id][1] + '%' }}>
+        <span className=${cx('grid place-items-center rounded-full border transition duration-300 shrink-0', id === 'hub' ? 'w-24 h-24' : 'w-16 h-16', on ? 'scale-110 bg-white/[.12]' : 'bg-white/[.05] group-hover:bg-white/[.1]')} style=${{ width: id === 'hub' ? 96 : 64, height: id === 'hub' ? 96 : 64, borderColor: on ? p.color : 'rgba(255,255,255,.2)', boxShadow: on ? `0 0 0 6px ${p.color}22, 0 0 40px ${p.color}55` : 'none', color: p.color }}>${id === 'hub' ? html`<span className="font-display font-extrabold text-[30px] text-white">?</span>` : html`<${Icon} name=${p.icon} size=${24} />`}</span>
+        <span className="mt-2 font-display font-bold text-[15px] leading-tight text-white">${p.name}</span>
+        <span className="font-mono text-[10.5px] uppercase tracking-[.14em] text-white/55 mt-0.5">${p.kicker}</span>
+      </button>`; })}
+    </div>
+
+    <!-- Móvil: el ciclo como recorrido vertical -->
+    <ol className="md:hidden grid gap-2">
+      ${['podcast', 'reels', 'comunidad'].map((id, i) => { const p = PRODUCTS[id]; const e = UNIVERSE_EDGES[i]; return html`<li key=${id}>
+        <button onClick=${() => setSel(id)} aria-pressed=${sel === id} className=${cx('w-full flex items-center gap-3 rounded-2xl border p-3 text-left transition', sel === id ? 'bg-white/[.1] border-white/30' : 'bg-white/[.04] border-white/10')}>
+          <span className="grid place-items-center w-11 h-11 rounded-full border border-white/20 shrink-0" style=${{ color: p.color }}><${Icon} name=${p.icon} size=${19} /></span>
+          <span className="min-w-0"><span className="block font-bold">${p.name}</span><span className="block font-mono text-[10.5px] uppercase tracking-[.14em] text-white/55">${p.kicker}</span></span>
+        </button>
+        <p className="flex items-center gap-2 pl-5 py-2 text-[13px] text-white/70"><span className="text-[#E0409A]">↓</span>${i < 2 ? e.label : e.label + ' (y el ciclo vuelve a empezar)'}</p>
+      </li>`; })}
+      <li className="grid grid-cols-2 gap-2 pt-1">${['posters', 'hub'].map(id => { const p = PRODUCTS[id]; return html`<button key=${id} onClick=${() => setSel(id)} aria-pressed=${sel === id} className=${cx('flex flex-col gap-1 rounded-2xl border p-3 text-left', sel === id ? 'bg-white/[.1] border-white/30' : 'bg-white/[.04] border-white/10')}><span style=${{ color: p.color }}><${Icon} name=${p.icon} size=${18} /></span><span className="font-bold text-[14px] leading-tight">${p.name}</span><span className="text-[12px] text-white/55">${p.kicker}</span></button>`; })}</li>
+    </ol>
+
+    <${UniverseDetail} id=${sel} onAction=${onAction} related=${related(sel)} />
+  </div>`;
+}
+function UniverseDetail({ id, onAction, related }) {
+  const p = PRODUCTS[id];
+  const ch = p.char && CHAR_BY_ID[p.char];
+  const actions = {
+    hub: [['Conocer las tres historias', () => onAction('scroll', 'historias')], ['Ver el teaser', () => onAction('media', 'teaser')]],
+    podcast: [['Escuchar un adelanto', () => onAction('media', 'podcast')], ['Conocer a Emma', () => onAction('story', 'emma')]],
+    reels: [['Ver los reels', () => onAction('media', 'reels')], ['Conocer a Simón', () => onAction('story', 'simon')]],
+    posters: [['Ver los pósteres', () => onAction('media', 'posters')]],
+    comunidad: [['Entrar a la comunidad', () => onAction('community')], ['Conocer a Daniel', () => onAction('story', 'daniel')]],
+  }[id];
+  return html`<div className="mt-6 rounded-[24px] lp-frame p-5 sm:p-7 grid md:grid-cols-[1.2fr_1fr] gap-6 fade" key=${id} aria-live="polite">
+    <div className="min-w-0">
+      <p className="font-mono text-[11px] uppercase tracking-[.18em]" style=${{ color: p.color }}>${p.kicker}</p>
+      <h3 className="font-display text-[24px] font-extrabold leading-tight mt-1">${p.name}</h3>
+      <p className="serif text-[21px] leading-snug mt-2 text-white/90">${p.tagline}</p>
+      <p className="mt-3 text-[15.5px] text-white/70 leading-relaxed">${p.role}</p>
+      <div className="mt-5 flex flex-wrap gap-2.5">${actions.map(([l, fn], i) => html`<button key=${l} onClick=${fn} className=${i === 0 ? btn + ' cta-grad text-white font-bold px-4 py-2.5' : btn + ' border border-white/25 text-white hover:bg-white/10 px-4 py-2.5'}>${l} ${i === 0 && html`<${Icon} name="arrow" size=${16} />`}</button>`)}</div>
+      ${id !== 'hub' && id !== 'comunidad' && html`<p className="mt-3 text-[12.5px] text-white/45">Contenido en producción: se muestra en estado de prototipo.</p>`}
+    </div>
+    <div className="min-w-0">
+      <p className="text-[13px] font-bold text-white/60">${id === 'hub' ? 'Cómo se conecta el universo' : 'Conexiones'}</p>
+      <ul className="mt-2 grid gap-2">
+        ${(id === 'hub' ? UNIVERSE_EDGES : related).map(e => html`<li key=${e.from + e.to} className="rounded-xl bg-white/[.04] border border-white/10 px-3 py-2.5 text-[14px]">
+          <span className="block text-[11.5px] font-mono uppercase tracking-[.12em] text-white/50">${PRODUCTS[e.from].name} → ${PRODUCTS[e.to].name}</span>
+          <span className="text-white/85">${e.label}</span></li>`)}
+        ${ch && html`<li className="rounded-xl px-3 py-2.5 text-[14px] text-white/70">Personaje: <strong className="text-white">${ch.name}</strong> · ${ch.year}</li>`}
+      </ul>
+    </div>
+  </div>`;
+}
+
+/* ---------- Página ---------- */
+function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
+  const [story, setStory] = useState(null);
+  const [media, setMedia] = useState(null);
+  const [why, setWhy] = useState(false);
+  const [sel, setSel] = useState('hub');
+  const [scrolled, setScrolled] = useState(false);
+  const [menu, setMenu] = useState(false);
+  const conflictRef = useRef(null);
+  const closeRef = useRef(null);
+  const cp = useScrollProgress(conflictRef);
+  const kp = useScrollProgress(closeRef);
+  useEffect(() => { const on = () => setScrolled(window.scrollY > 40); on(); window.addEventListener('scroll', on, { passive: true }); return () => window.removeEventListener('scroll', on); }, []);
+  const go = id => { setMenu(false); if (id === 'inicio') return window.scrollTo({ top: 0, behavior: 'smooth' }); const el = document.getElementById(id); el && el.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+  const toCommunity = () => { setStory(null); setMedia(null); session ? onEnter() : onLogin(); };
+  const onAction = (type, arg) => { if (type === 'scroll') go(arg); else if (type === 'media') setMedia(arg); else if (type === 'story') setStory(arg); else if (type === 'community') toCommunity(); };
+  const links = [['inicio', 'Inicio'], ['historias', 'Las historias'], ['universo', 'Explora el universo']];
+  const commBtn = (extra = '') => html`<button onClick=${toCommunity} className=${cx('comm-btn inline-flex items-center gap-2 rounded-full px-4 py-2 text-[14px] font-bold text-white whitespace-nowrap transition', extra)}><${Icon} name="users" size=${16} />${session ? 'Ir a la comunidad' : 'Comunidad docente'}</button>`;
+  const highlight = 'Porque aprender no debería ser solo recordar información. Debería ser descubrir, cuestionar, imaginar y crear.'.split(' ');
+  const lit = Math.round(Math.max(0, Math.min(1, (cp - .25) / .4)) * highlight.length);
+
+  return html`<div className="lp min-h-full">
+    <header className=${cx('fixed inset-x-0 top-0 z-40 pt-[env(safe-area-inset-top,0px)] transition duration-300', scrolled || menu ? 'bg-[#05061A]/90 backdrop-blur-md border-b border-white/10' : 'border-b border-transparent')}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+        <${Logo} light onClick=${() => go('inicio')} />
+        <nav className="hidden md:flex items-center gap-1 text-[15px]" aria-label="Menú principal">
+          ${links.map(([id, l]) => html`<button key=${id} onClick=${() => go(id)} className="px-3 py-2 rounded-lg text-white/75 hover:text-white hover:bg-white/10 transition">${l}</button>`)}
+          <span className="ml-2">${commBtn()}</span>
+        </nav>
+        <button className="md:hidden p-2 -mr-2 rounded-xl text-white hover:bg-white/10" onClick=${() => setMenu(!menu)} aria-expanded=${menu} aria-label=${menu ? 'Cerrar menú' : 'Abrir menú'}><${Icon} name=${menu ? 'x' : 'menu'} size=${22} /></button>
+      </div>
+      ${menu && html`<nav className="md:hidden px-4 pb-4 grid gap-1 fade" aria-label="Menú principal">
+        ${links.map(([id, l]) => html`<button key=${id} onClick=${() => go(id)} className="text-left px-3 py-3 rounded-xl text-white/85 hover:bg-white/10 text-[16px]">${l}</button>`)}
+        <div className="pt-2">${commBtn('w-full justify-center py-3')}</div>
+      </nav>`}
+    </header>
+
+    <!-- 1 · HERO -->
+    <section id="inicio" className="relative overflow-hidden min-h-[640px] flex items-center">
+      <div className="absolute inset-0 hero-aurora" aria-hidden="true"></div>
+      ${MEDIA.heroVideo && html`<video className="absolute inset-0 w-full h-full object-cover opacity-30" src=${MEDIA.heroVideo} autoPlay muted loop playsInline aria-hidden="true"></video>`}
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#05061A] to-transparent" aria-hidden="true"></div>
+      <div className="hero-horizon" aria-hidden="true"></div>
+      <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 pt-32 pb-20 sm:pt-40 sm:pb-28">
+        <p className="font-mono text-[11.5px] uppercase tracking-[.24em] text-white/55 flex items-center gap-3"><span className="w-2 h-2 rounded-full bg-[#E0409A] rec-dot"></span>Transmisión · 2040 → 2026</p>
+        <h1 className="mt-6">
+          <span className="block font-display font-extrabold text-[clamp(2.3rem,6.4vw,5.1rem)] leading-[1] tracking-[-.025em] balance">El futuro no necesita más respuestas.</span>
+          <span className="block serif grad-text text-[clamp(2.7rem,7.6vw,6.2rem)] leading-[1.02] mt-2 pb-2">Necesita mejores preguntas.</span>
+        </h1>
+        <div className="mt-8 max-w-[58ch] space-y-4 text-[clamp(1rem,1.6vw,1.15rem)] leading-relaxed text-white/75">
+          <p>La tecnología avanza. El mundo cambia. Las nuevas generaciones aprenden, se comunican y descubren el mundo de maneras diferentes.</p>
+          <p className="text-white/90">Pero ¿estamos transformando la manera de enseñar para despertar su curiosidad, creatividad y capacidad de pensar por sí mismas?</p>
+        </div>
+        <div className="mt-10 flex flex-wrap gap-3">
+          <button onClick=${() => go('historias')} className=${btn + ' cta-grad cta-pulse pulse-white text-white font-bold px-6 py-3.5 text-[16px] hover:-translate-y-0.5'}>Explorar el universo <${Icon} name="arrow" size=${18} /></button>
+          <button onClick=${() => setMedia('teaser')} className=${btn + ' border border-white/25 text-white hover:bg-white/10 px-5 py-3.5 text-[16px] backdrop-blur-sm'}><span className="grid place-items-center w-7 h-7 rounded-full bg-white text-[#05061A]"><${Icon} name="play" size=${12} fill="currentColor" /></span>Ver el teaser</button>
+        </div>
+      </div>
+      <button onClick=${() => go('conflicto')} className="absolute left-1/2 -translate-x-1/2 bottom-6 text-white/50 hover:text-white hidden sm:flex flex-col items-center gap-1 text-[11px] font-mono uppercase tracking-[.2em]" aria-label="Seguir bajando"><span>Bajar</span><span className="scroll-cue"><${Icon} name="chevdown" size=${18} /></span></button>
+    </section>
+
+    <!-- 2 · EL CONFLICTO -->
+    <section id="conflicto" ref=${conflictRef} className="relative overflow-hidden py-24 sm:py-32">
+      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 pointer-events-none select-none" aria-hidden="true">
+        ${[['pantallas · redes sociales · inteligencia artificial · contenidos · algoritmos ·', 1], ['notificaciones · videos · respuestas instantáneas · pantallas ·', -1]].map(([t, dir], i) => html`<p key=${i} className="whitespace-nowrap font-display font-extrabold text-[clamp(3rem,9vw,7.5rem)] leading-[1.05] kw-line" style=${{ transform: `translateX(${dir * (cp * 30 - 15)}%)` }}>${t} ${t}</p>`)}
+      </div>
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 items-end">
+        <div>
+          <${Eyebrow}>El conflicto</${Eyebrow}>
+          <h2 className="mt-4"><span className="block font-display font-extrabold text-[clamp(2.3rem,5.6vw,4.2rem)] leading-[1] tracking-[-.02em]">El mundo cambió.</span><span className="block serif text-[clamp(2.4rem,6vw,4.6rem)] leading-[1.05] text-[#C9B8FF]">¿Y la forma de enseñar?</span></h2>
+        </div>
+        <div className="lp-glass rounded-[24px] p-6 sm:p-7 space-y-4 text-[17px] leading-relaxed text-white/80">
+          <p>Las nuevas generaciones crecen entre pantallas, redes sociales, inteligencia artificial y un universo de contenidos que transforma su manera de relacionarse con el conocimiento.</p>
+          <p>Mientras tanto, la educación enfrenta un desafío: dejar de concentrarse únicamente en transmitir respuestas y comenzar a despertar preguntas.</p>
+        </div>
+      </div>
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 mt-20 sm:mt-28">
+        <p className="font-display font-bold text-[clamp(1.6rem,3.8vw,2.9rem)] leading-[1.18] tracking-[-.01em] balance" aria-label=${highlight.join(' ')}>
+          ${highlight.map((w, i) => html`<span key=${i} aria-hidden="true" className=${cx('transition-colors duration-500', i < lit ? (/descubrir|cuestionar|imaginar|crear/.test(w) ? 'grad-text' : 'text-white') : 'text-white/40')}>${w} </span>`)}
+        </p>
+        <button onClick=${() => setWhy(true)} className="mt-8 inline-flex items-center gap-2 text-[15px] font-bold text-[#C9B8FF] hover:text-white group"><${Icon} name="help" size=${18} />¿Por qué nace KURIOSITY?<span className="transition group-hover:translate-x-1"><${Icon} name="arrow" size=${16} /></span></button>
+      </div>
+    </section>
+
+    <!-- 3 · TRES HISTORIAS -->
+    <section id="historias" className="relative py-24 sm:py-32 scroll-mt-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="grid lg:grid-cols-[1fr_auto] gap-6 items-end">
+          <div>
+            <${Eyebrow}>Las historias</${Eyebrow}>
+            <h2 className="mt-4"><span className="block font-display font-extrabold text-[clamp(2.3rem,5.6vw,4.2rem)] leading-[1] tracking-[-.02em]">Tres historias.</span><span className="block serif grad-text text-[clamp(2.4rem,6vw,4.6rem)] leading-[1.05] pb-1">Un futuro en juego.</span></h2>
+          </div>
+          <p className="max-w-md text-[17px] text-white/70 leading-relaxed">Tres personas. Tres perspectivas. Una misma pregunta: ¿qué sucede cuando dejamos de despertar la curiosidad?</p>
+        </div>
+        <div className="mt-12 grid md:grid-cols-3 gap-5">
+          ${CHARACTERS.map(c => html`<article key=${c.id} className="story-card group relative rounded-[28px] overflow-hidden min-h-[560px] flex flex-col justify-end isolate" style=${{ '--c1': c.c1, '--c2': c.c2 }}>
+            <div className="absolute inset-0 -z-10 transition duration-700 group-hover:scale-105"><${CharacterMedia} c=${c} /></div>
+            <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#05061A] via-[#05061A]/70 to-transparent"></div>
+            <div className="absolute right-5 top-4 -z-10 font-mono font-medium text-[44px] leading-none tracking-[-.04em]" style=${{ color: c.c1 }}>${c.year}</div>
+            <div className="p-6 sm:p-7">
+              <p className="font-display font-extrabold text-[30px] leading-none">${c.name}</p>
+              <p className="mt-4 serif text-[25px] leading-[1.15] text-white">${c.q}</p>
+              <p className="mt-4 text-[15px] text-white/70 leading-relaxed story-desc">${c.desc}</p>
+              <button onClick=${() => setStory(c.id)} className="mt-6 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[15px] font-bold text-white story-cta">${c.cta}<span className="transition group-hover:translate-x-1"><${Icon} name="arrow" size=${16} /></span></button>
+            </div>
+          </article>`)}
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · EXPLORA EL UNIVERSO -->
+    <section id="universo" className="relative py-24 sm:py-32 scroll-mt-16 lp-band">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="grid lg:grid-cols-[1.1fr_1fr] gap-6 lg:gap-14 items-end">
+          <div>
+            <${Eyebrow}>Explora el universo</${Eyebrow}>
+            <h2 className="mt-4"><span className="block font-display font-extrabold text-[clamp(2.1rem,5vw,3.8rem)] leading-[1.02] tracking-[-.02em]">No es solo una historia.</span><span className="block serif text-[clamp(2.2rem,5.4vw,4.1rem)] leading-[1.05] text-[#C9B8FF]">Es una invitación a cambiar el futuro.</span></h2>
+          </div>
+          <p className="text-[17px] text-white/70 leading-relaxed">KURIOSITY es un universo de experiencias que conecta el presente con un futuro posible. A través de historias, preguntas y espacios de participación, te invitamos a descubrir por qué necesitamos nuevas maneras de enseñar y aprender.</p>
+        </div>
+        <p className="mt-10 text-[14px] text-white/55 flex items-center gap-2"><${Icon} name="spark" size=${15} />Toca cada experiencia para ver qué aporta y a dónde te lleva. Puedes empezar por cualquiera.</p>
+        <div className="mt-4"><${UniverseMap} sel=${sel} setSel=${setSel} onAction=${onAction} /></div>
+      </div>
+    </section>
+
+    <!-- 5 · DE ESPECTADOR A PROTAGONISTA -->
+    <section id="comunidad" ref=${closeRef} className="relative overflow-hidden py-24 sm:py-32 scroll-mt-16">
+      <div className="absolute inset-0 community-glow" aria-hidden="true"></div>
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.15fr_.85fr] gap-12 items-start">
+        <div>
+          <${Eyebrow}>Comunidad docente</${Eyebrow}>
+          <h2 className="mt-4"><span className="block font-display font-extrabold text-[clamp(2.3rem,5.6vw,4.2rem)] leading-[1] tracking-[-.02em]">El futuro también se enseña.</span><span className="block serif grad-text text-[clamp(2.2rem,5.4vw,4rem)] leading-[1.08] pb-1">Y comienza en nuestras aulas.</span></h2>
+          <div className="mt-7 space-y-4 text-[17px] text-white/75 leading-relaxed max-w-[56ch]">
+            <p>No podemos cambiar el pasado. Pero sí podemos transformar la manera en que enseñamos hoy.</p>
+            <p>Una comunidad para docentes que creen que enseñar es mucho más que transmitir conocimientos: es despertar preguntas, inspirar nuevas ideas y formar personas capaces de transformar su mundo.</p>
+          </div>
+          <figure className="mt-8 flex items-start gap-4 lp-glass rounded-[22px] p-5 max-w-[56ch]">
+            <${DanielAvatar} size=${56} className="ring-2 ring-white/20" />
+            <figcaption className="text-[15.5px] text-white/80 leading-relaxed"><span className="font-bold text-white">Daniel</span> está ante la misma decisión que muchos docentes: seguir enseñando como siempre o atreverse a transformar su clase. En la comunidad no tiene que decidirlo solo, y tú tampoco.</figcaption>
+          </figure>
+          <p className="mt-10 serif text-[clamp(1.7rem,3.6vw,2.6rem)] leading-[1.15] text-white balance">¿Y si el cambio que necesita la educación empezara en tu próxima clase?</p>
+          <div className="mt-7 flex flex-wrap items-center gap-4">
+            <button onClick=${session ? onEnter : onJoin} className=${btn + ' cta-grad cta-pulse pulse-white text-white font-bold px-6 py-3.5 text-[16px] hover:-translate-y-0.5'}>${session ? 'Ir a la comunidad docente' : 'Quiero transformar mi forma de enseñar'} <${Icon} name="arrow" size=${18} /></button>
+            ${!session && html`<button onClick=${onLogin} className="text-[15px] text-white/70 hover:text-white underline-offset-4 hover:underline">Ya tengo cuenta · Iniciar sesión</button>`}
+          </div>
+          <p className="mt-4 flex items-center gap-2 text-[13px] text-white/50"><${Icon} name="shield" size=${15} />Comunidad con docentes verificados.</p>
+        </div>
+        <ul className="grid gap-3 lg:mt-24">
+          ${[['search', 'Descubre', 'Descubre recursos para transformar tus clases.'], ['message', 'Comparte', 'Comparte experiencias con otros docentes.'], ['layers', 'Crea', 'Crea y construye nuevas estrategias de aprendizaje.']].map(([i, t, d], k) => html`<li key=${t} className="flex items-center gap-4 lp-glass rounded-[20px] p-5">
+            <span className="font-mono text-[12px] text-white/40 w-5">0${k + 1}</span>
+            <span className="grid place-items-center w-12 h-12 rounded-2xl shrink-0" style=${{ background: ['linear-gradient(135deg,#3D6BFF,#2DD4BF)', 'linear-gradient(135deg,#7C5CFF,#E0409A)', 'linear-gradient(135deg,#E0409A,#FF7A59)'][k] }}><${Icon} name=${i} size=${21} /></span>
+            <span className="min-w-0"><span className="block font-display font-bold text-[18px]">${t}</span><span className="block text-[14.5px] text-white/70">${d}</span></span>
+          </li>`)}
+        </ul>
+      </div>
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 mt-20 sm:mt-28">
+        <p className="font-display font-extrabold text-[clamp(2.2rem,7.5vw,6rem)] leading-[1] tracking-[-.03em] flex flex-wrap gap-x-[.35em]">
+          ${['Descubre.', 'Comparte.', 'Crea.', 'Transforma.'].map((w, i) => html`<span key=${w} className=${cx('transition duration-700', kp > .35 + i * .08 ? (i === 3 ? 'grad-text' : 'text-white') : 'text-white/25')}>${w}</span>`)}
+        </p>
+      </div>
+    </section>
+
+    <!-- 6 · FOOTER -->
+    <footer className="border-t border-white/10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14 grid md:grid-cols-[1.3fr_1fr_1fr_1fr] gap-10">
+        <div>
+          <${Logo} light onClick=${() => go('inicio')} />
+          <p className="mt-4 serif text-[24px] leading-tight text-white/90 max-w-[18ch]">El futuro comienza con lo que hacemos hoy.</p>
+          <p className="mt-4 font-mono text-[13px] text-white/55">kuriosity.co</p>
+        </div>
+        ${[
+          ['Las historias', CHARACTERS.map(c => [c.name + ' · ' + c.year, () => setStory(c.id)])],
+          ['Experiencias', [['Pódcast audiovisual', () => setMedia('podcast')], ['Reels narrativos', () => setMedia('reels')], ['Pósteres interactivos', () => setMedia('posters')], ['Mapa del universo', () => go('universo')]]],
+          ['Comunidad docente', [[session ? 'Ir a la comunidad' : 'Ingresar', toCommunity], ...(session ? [] : [['Crear cuenta', onJoin]]), ['¿Por qué nace KURIOSITY?', () => setWhy(true)]]],
+        ].map(([t, items]) => html`<nav key=${t} aria-label=${t}><p className="text-[13px] font-bold text-white/50">${t}</p><ul className="mt-3 grid gap-2">${items.map(([l, fn]) => html`<li key=${l}><button onClick=${fn} className="text-[15px] text-white/80 hover:text-white text-left">${l}</button></li>`)}</ul></nav>`)}
+      </div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-10 flex flex-wrap items-center justify-between gap-4 text-[12.5px] text-white/45">
+        <p>Prototipo académico · Maestría en Comunicación Transmedia</p>
+        <${PrototypeBadge} light onClick=${onInfo} />
+      </div>
+    </footer>
+
+    <${StoryPanel} id=${story} session=${session} onClose=${() => setStory(null)} onStory=${setStory} onMedia=${k => { setStory(null); setMedia(k); }} onCommunity=${toCommunity} />
+    <${MediaModal} kind=${media} onClose=${() => setMedia(null)} onStory=${id => { setMedia(null); setStory(id); }} />
+    <${WhyModal} open=${why} onClose=${() => setWhy(false)} />
+  </div>`;
+}
 /* ===================== AUTENTICACIÓN ===================== */
 const FREE_DOMAINS = ['gmail.com','hotmail.com','outlook.com','yahoo.com','yahoo.es','live.com','icloud.com','hotmail.es','outlook.es','msn.com'];
 function domainKind(email) {
@@ -938,7 +1216,7 @@ function GooglePicker({ open, onClose, onPick }) {
     <div className="p-6 sm:p-7">
       <div className="flex items-center gap-2"><${GoogleG} size=${22} /><span className="text-[15px] text-ink/80">Acceder con Google</span></div>
       <h2 className="font-display text-[22px] font-bold text-ink mt-4">Elige una cuenta</h2>
-      <p className="text-mute text-[14px]">para continuar en Kuriozity</p>
+      <p className="text-mute text-[14px]">para continuar en KURIOSITY</p>
       <p className="mt-3 text-[12.5px] rounded-lg bg-sun/15 text-[#7A4B00] px-3 py-2">Simulación: no se conecta con tu cuenta de Google real.</p>
       <ul className="mt-4 divide-y divide-line border-y border-line">
         ${accounts.map(a => html`<li key=${a.email}><button className="w-full flex items-center gap-3 py-3 px-1 text-left hover:bg-mist rounded-lg transition" onClick=${() => onPick(a.email, a.name)}>
@@ -1008,7 +1286,7 @@ function AuthScreen({ tab, setTab, accounts, actions, onBack, onInfo }) {
       <div className="qmarks" aria-hidden="true"><span className="qm qm0">?</span><span className="qm qm3">¿</span></div>
       <div className="relative flex items-center justify-between gap-3">
         <${Logo} light onClick=${onBack} />
-        <button className="inline-flex items-center gap-1.5 text-white/75 hover:text-white text-[14px] font-semibold" onClick=${onBack}><${Icon} name="back" size=${16} /> Volver a Kuriozity</button>
+        <button className="inline-flex items-center gap-1.5 text-white/75 hover:text-white text-[14px] font-semibold" onClick=${onBack}><${Icon} name="back" size=${16} /> Volver a KURIOSITY</button>
       </div>
       <div className="relative my-auto py-10 lg:py-0 max-w-lg">
         <p className="font-mono text-[12px] uppercase tracking-[.18em] text-teal">Comunidad docente</p>
@@ -1187,7 +1465,7 @@ function VerifyScreen({ me, actions, toast, onInfo }) {
         <p className="text-[14px] text-ink/70 mt-1">En la versión real estos pasos ocurren fuera de la plataforma. Aquí puedes recorrerlos sin enviar nada.</p>
         <div className="mt-4 flex flex-wrap gap-3">
           ${state === 'email' && html`<button className=${btn + ' bg-ink text-white hover:bg-ink-2 px-4 py-2.5'} onClick=${actions.verifyEmail}><${Icon} name="mail" size=${17} /> Abrir el enlace del correo</button>`}
-          ${state === 'teacher' && html`<button className=${btn + ' bg-ink text-white hover:bg-ink-2 px-4 py-2.5'} onClick=${actions.approveTeacher}><${Icon} name="shield" size=${17} /> Aprobar como moderador de Kuriozity</button>`}
+          ${state === 'teacher' && html`<button className=${btn + ' bg-ink text-white hover:bg-ink-2 px-4 py-2.5'} onClick=${actions.approveTeacher}><${Icon} name="shield" size=${17} /> Aprobar como moderador de KURIOSITY</button>`}
         </div>
       </section>`}
 
@@ -1366,7 +1644,7 @@ function ShareModal({ post, onClose, toast, onSocial }) {
   useEffect(() => { setSel([]); setMsg(''); }, [post && post.id]);
   const people = ['daniel', 'marcela', 'jhon', 'paola', 'camilo', 'luz', 'andres'];
   const copy = async () => {
-    const link = 'kuriozity.co/comunidad/' + (post ? post.id : '');
+    const link = 'kuriosity.co/comunidad/' + (post ? post.id : '');
     try { await navigator.clipboard.writeText(link); toast('Enlace interno copiado.'); } catch (e) { toast('Enlace: ' + link, 'info'); }
   };
   return html`<${Modal} open=${!!post} onClose=${onClose} size="max-w-md" label="Compartir publicación">
@@ -1376,7 +1654,7 @@ function ShareModal({ post, onClose, toast, onSocial }) {
       <p className="mt-3 text-[13px] font-bold text-ink flex items-center gap-2">En redes sociales <span className="inline-flex items-center gap-1 rounded-full bg-teal-soft text-teal-d px-2 py-0.5 text-[11.5px]"><${Icon} name="star" size=${11} fill="currentColor" />+${POINTS.share} pt · máx. ${SHARE_DAILY_MAX} al día</span></p>
       <div className="mt-2 grid grid-cols-4 gap-2">${[['WhatsApp', '#1FA855'], ['Facebook', '#1877F2'], ['LinkedIn', '#0A66C2'], ['X', '#0E1A3C']].map(([n, c]) => html`<button key=${n} className="rounded-xl border border-line py-2.5 text-[12.5px] font-bold text-ink hover:bg-mist transition flex flex-col items-center gap-1" onClick=${() => { onSocial(post, n); onClose(); }}><span className="grid place-items-center w-8 h-8 rounded-full text-white font-display text-[13px]" style=${{ background: c }}>${n[0]}</span>${n}</button>`)}</div>
       <p className="mt-1.5 text-[12px] text-mute">Simulado: no se publica nada en tus redes.</p>
-      <p className="mt-5 text-[13px] font-bold text-ink">Con colegas de Kuriozity</p>
+      <p className="mt-5 text-[13px] font-bold text-ink">Con colegas de KURIOSITY</p>
       <p className="text-mute text-[14px] mt-1 line-clamp-2">${post.title}</p>
       <ul className="mt-4 grid gap-1">${people.map(id => { const p = T[id]; const on = sel.includes(id); return html`<li key=${id}><button className=${cx('w-full flex items-center gap-3 rounded-xl px-2 py-2 text-left transition', on ? 'bg-violet-soft' : 'hover:bg-mist')} onClick=${() => setSel(on ? sel.filter(x => x !== id) : [...sel, id])} aria-pressed=${on}>
         <${Avatar} person=${p} size=${34} /><span className="min-w-0"><span className="block font-bold text-[14px] text-ink">${p.name}</span><span className="block text-[12.5px] text-mute truncate">${p.area} · ${p.city}</span></span>
@@ -1406,7 +1684,7 @@ function Community({ ctx, initialQuery = '' }) {
   }, [posts, cat, sort, q]);
   const counts = useMemo(() => Object.fromEntries(CATS.map(c => [c, posts.filter(p => p.cat === c).length])), [posts]);
   return html`<div>
-    <${PageHead} eyebrow="El corazón de Kuriozity" title="Comunidad" desc="Experiencias, preguntas e ideas de docentes de todo el país. Lo que compartes aquí se convierte en punto de partida para otros profes."
+    <${PageHead} eyebrow="El corazón de KURIOSITY" title="Comunidad" desc="Experiencias, preguntas e ideas de docentes de todo el país. Lo que compartes aquí se convierte en punto de partida para otros profes."
       action=${html`<button className=${btnP} onClick=${() => openComposer({})}><${Icon} name="plus" size=${17} /> Compartir una experiencia</button>`} />
     <${DanielTip} section="comunidad" />
     <div className="grid xl:grid-cols-[1fr_300px] gap-6 items-start">
@@ -1979,7 +2257,7 @@ function PointsPanel({ ctx }) {
           ${nxt ? html`<p className="text-[14px] text-white/80">Próximo: <strong className="text-white">nivel ${nxt.n} · ${nxt.name}</strong>, desbloquea ${nxt.unlock.toLowerCase()}</p>
             <div className="mt-2 h-3 rounded-full bg-white/15 overflow-hidden"><div className="h-full rounded-full bg-teal transition-all duration-700" style=${{ width: pct + '%' }}></div></div>
             <p className="mt-1.5 text-[13px] text-white/65 tabular-nums">${fmtPts(pts)} de ${fmtPts(nxt.min)} puntos · te faltan ${fmtPts(nxt.min - pts)}</p>`
-          : html`<p className="text-[15px] text-white/85">Alcanzaste el nivel más alto de Kuriozity.</p>`}
+          : html`<p className="text-[15px] text-white/85">Alcanzaste el nivel más alto de KURIOSITY.</p>`}
           <p className="mt-3 text-[13px] text-white/70">Replicar una experiencia de otro profe en tu aula <strong className="text-white">+${POINTS.replicate}</strong> · Publicar una experiencia <strong className="text-white">+${POINTS.publish}</strong> · Compartir en redes <strong className="text-white">+${POINTS.share}</strong> (máx. ${SHARE_DAILY_MAX} al día)</p>
         </div>
       </div>
@@ -2063,7 +2341,7 @@ function DanielWelcome({ open, name, onGo, onExplore }) {
       <div className="qmarks" aria-hidden="true"><span className="qm qm1">?</span><span className="qm qm4">¿</span></div>
       <div className="relative flex items-center gap-4">
         <${DanielAvatar} size=${84} className="ring-4 ring-white/15 shadow-xl" />
-        <div><p className="font-display text-[24px] font-extrabold leading-tight">Daniel</p><p className="text-white/70 text-[14px]">Docente y miembro de Kuriozity</p></div>
+        <div><p className="font-display text-[24px] font-extrabold leading-tight">Daniel</p><p className="text-white/70 text-[14px]">Docente y miembro de KURIOSITY</p></div>
       </div>
       <h2 className="relative font-display text-[clamp(1.6rem,4.5vw,2.1rem)] font-extrabold mt-6 leading-tight">¡Hola, colega! Soy Daniel.</h2>
     </div>
@@ -2094,7 +2372,7 @@ function JourneyStrip({ ctx }) {
   ];
   const n = steps.filter(s => s[2]).length;
   return html`<section data-guide="journey" className="rounded-3xl bg-white border border-line p-4 sm:p-5">
-    <div className="flex items-center justify-between gap-3"><p className="font-bold text-ink text-[15px]">Tu recorrido en Kuriozity</p><span className="font-mono text-[13px] text-mute">${n}/5</span></div>
+    <div className="flex items-center justify-between gap-3"><p className="font-bold text-ink text-[15px]">Tu recorrido en KURIOSITY</p><span className="font-mono text-[13px] text-mute">${n}/5</span></div>
     <ol className="mt-3 grid grid-cols-5 gap-1.5 sm:gap-3">
       ${steps.map(([t, d, ok, fn], i) => html`<li key=${t}><button onClick=${fn} className="w-full text-left group" title=${d}>
         <span className=${cx('block h-1.5 rounded-full transition', ok ? 'bg-teal-d' : 'bg-ink/10 group-hover:bg-violet/30')}></span>
@@ -2202,7 +2480,7 @@ function SearchBox({ ctx, onDone, autoFocus = false }) {
   const Row = ({ icon, t, sub, fn }) => html`<li><button className="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-left hover:bg-mist" onMouseDown=${e => e.preventDefault()} onClick=${() => pick(fn)}><span className="grid place-items-center w-8 h-8 rounded-lg bg-mist text-ink/70 shrink-0"><${Icon} name=${icon} size=${15} /></span><span className="min-w-0"><span className="block text-[14px] font-semibold text-ink truncate">${t}</span><span className="block text-[12px] text-mute truncate">${sub}</span></span></button></li>`;
   return html`<div className="relative w-full">
     <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-mute pointer-events-none"><${Icon} name="search" size=${17} /></span>
-    <label htmlFor="global-search" className="sr-only">Buscar en Kuriozity</label>
+    <label htmlFor="global-search" className="sr-only">Buscar en KURIOSITY</label>
     <input id="global-search" autoFocus=${autoFocus} className=${inputC + ' pl-10 !py-2 !rounded-full !bg-mist focus:!bg-white border-transparent'} placeholder="Buscar recursos, cursos o publicaciones" value=${q} onChange=${e => { setQ(e.target.value); setOpen(true); }} onFocus=${() => setOpen(true)} onBlur=${() => setTimeout(() => setOpen(false), 120)} onKeyDown=${e => { if (e.key === 'Enter' && s) pick(() => ctx.goPost(q)); }} />
     ${open && res && html`<div className="absolute left-0 right-0 top-[calc(100%+6px)] z-50 rounded-2xl bg-white border border-line shadow-xl p-2 max-h-[70vh] overflow-y-auto pop">
       ${total === 0 ? html`<p className="px-3 py-3 text-[14px] text-mute">Sin resultados para “${q}”. Prueba con otra palabra o pregúntale a la comunidad.</p>` : null}

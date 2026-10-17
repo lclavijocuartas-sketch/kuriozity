@@ -1,216 +1,3 @@
-/* ===================== PÁGINA PÚBLICA ===================== */
-function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
-  const [story, setStory] = useState(null);
-  const go = id => { const el = document.getElementById(id); el && el.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
-  const links = [['daniel', 'Daniel'], ['universo', 'El universo'], ['historias', 'Historias'], ['comunidad', 'Comunidad docente']];
-  const s = story && STORIES.find(x => x.id === story);
-  return html`<div className="bg-white">
-    <header className="fixed inset-x-0 top-0 pt-[env(safe-area-inset-top,0px)] z-40 bg-ink/95 backdrop-blur border-b border-white/10 shadow-[0_8px_24px_-16px_rgba(0,0,0,.6)]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
-        <${Logo} light onClick=${() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
-        <nav className="hidden md:flex items-center gap-1 text-white/80 text-[15px]" aria-label="Menú principal">
-          ${links.map(([id, l]) => html`<button key=${id} onClick=${() => go(id)} className="px-3 py-2 rounded-lg hover:text-white hover:bg-white/10 transition">${l}</button>`)}
-        </nav>
-        <div className="flex items-center gap-2">
-          <button className=${btn + ' cta-grad cta-pulse pulse-white text-white font-bold px-4 py-2 text-[14.5px] whitespace-nowrap hover:-translate-y-0.5'} onClick=${session ? onEnter : onLogin}>${session ? 'Ir a la comunidad' : 'Ingresa a la comunidad'} <${Icon} name="arrow" size=${16} /></button>
-        </div>
-      </div>
-      <nav className="md:hidden flex gap-1 overflow-x-auto px-3 pb-2 -mt-1 text-white/80 text-[14px] no-scrollbar" aria-label="Menú principal">
-        ${links.map(([id, l]) => html`<button key=${id} onClick=${() => go(id)} className="px-3 py-1.5 rounded-full bg-white/[.07] whitespace-nowrap">${l}</button>`)}
-      </nav>
-    </header>
-    <div className="h-[102px] md:h-16 bg-ink" aria-hidden="true"></div>
-
-    <section className="relative overflow-hidden bg-ink text-white hero-bg">
-      <div className="qmarks" aria-hidden="true">${['?', '¿', '?', '?', '¿'].map((q, i) => html`<span key=${i} className=${'qm qm' + i}>${q}</span>`)}</div>
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-24 grid lg:grid-cols-[1.12fr_.88fr] gap-12 items-center">
-        <div>
-          <p className="font-mono text-[12px] uppercase tracking-[.2em] text-teal">Experiencia transmedia · Colombia</p>
-          <h1 className="font-display font-extrabold text-[clamp(2.35rem,6.2vw,4.5rem)] leading-[1.02] tracking-[-.02em] mt-4 balance">El futuro de la educación comienza con <span className="text-teal">una pregunta</span>.</h1>
-          <p className="mt-6 text-[18px] leading-relaxed text-white/80 max-w-xl">¿Y si recuperar la curiosidad fuera el primer paso para transformar la manera en que aprendemos? Kuriozity es una experiencia transmedia que conecta historias, preguntas y personas que creen en otras formas de enseñar y aprender.</p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <button className=${btn + ' cta-grad cta-pulse pulse-white text-white font-bold px-5 py-3 text-[16px] hover:-translate-y-0.5'} onClick=${session ? onEnter : onJoin}>Únete a la comunidad docente <${Icon} name="arrow" size=${18} /></button>
-            <button className=${btn + ' border border-white/25 text-white hover:bg-white/10 px-5 py-3 text-[16px]'} onClick=${() => go('universo')}>Conoce Kuriozity</button>
-          </div>
-          <p className="mt-7 flex items-center gap-2 text-white/60 text-[14px]"><span className="w-8 h-px bg-white/30"></span>Transformemos el aula juntos.</p>
-        </div>
-        <div className="relative mx-auto w-full max-w-[420px]">
-          <div className="rounded-[28px] bg-white/[.07] border border-white/15 p-5 backdrop-blur-md shadow-2xl rotate-[-1.5deg]">
-            <div className="flex items-center justify-between">
-              <span className="font-mono text-[11px] uppercase tracking-[.16em] text-white/60">Serie · Ep. 1</span>
-              <span className="inline-flex items-center gap-1 text-[12px] text-teal"><span className="w-1.5 h-1.5 rounded-full bg-teal pulse"></span> Próximamente</span>
-            </div>
-            <div className="mt-4 flex items-center gap-4">
-              <${DanielAvatar} size=${76} />
-              <div><p className="font-display text-[22px] font-bold leading-tight">El aula en silencio</p><p className="text-white/65 text-[14px]">Con Daniel, profe de 45 años</p></div>
-            </div>
-            <blockquote className="mt-5 font-display text-[20px] leading-snug text-white/95">“¿En qué momento dejamos de hacer preguntas en clase?”</blockquote>
-            <div className="mt-5 flex items-center gap-3">
-              <span className="grid place-items-center w-10 h-10 rounded-full bg-teal text-ink"><${Icon} name="play" size=${16} fill="currentColor" /></span>
-              <div className="flex-1 h-1.5 rounded-full bg-white/15 overflow-hidden"><div className="h-full w-1/3 bg-teal rounded-full"></div></div>
-              <span className="font-mono text-[12px] text-white/60">04:12</span>
-            </div>
-          </div>
-          <div className="absolute -left-4 -bottom-8 sm:-left-10 rounded-2xl bg-white text-ink px-4 py-3 shadow-xl rotate-[3deg] flex items-center gap-3 max-w-[240px]">
-            <span className="grid place-items-center w-9 h-9 rounded-xl bg-violet-soft text-violet-d"><${Icon} name="mic" size=${18} /></span>
-            <div><p className="text-[12px] text-mute">Pódcast</p><p className="font-bold text-[14px] leading-tight">Preguntas de recreo</p></div>
-          </div>
-          <div className="absolute -right-2 -top-6 sm:-right-6 rounded-2xl bg-sun text-ink px-3.5 py-2.5 shadow-xl rotate-[4deg] font-bold text-[13px] flex items-center gap-2">
-            <${Icon} name="users" size=${16} /> +1.200 docentes
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="por-que" className="scroll-mt-32 md:scroll-mt-20 bg-white border-b border-line">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20 grid lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-14 items-center">
-        <div>
-          <p className="font-mono text-[12px] uppercase tracking-[.18em] text-violet-d">Por qué ahora</p>
-          <h2 className="font-display text-[clamp(1.8rem,4vw,2.6rem)] font-extrabold text-ink leading-[1.08] mt-3 balance">Desde 2015, la comprensión lectora de nuestros estudiantes no ha dejado de caer.</h2>
-          <p className="mt-5 text-[17px] text-ink/75 leading-relaxed max-w-prose">El deterioro empezó antes de la inteligencia artificial y antes de TikTok. El problema no es la herramienta: es la calidad del aprendizaje. Kuriozity apuesta por un aprendizaje significativo, en el que importa el proceso de pensar y no solo la tarea entregada, sin importar si la chispa vino de un libro, un video o la IA.</p>
-        </div>
-        <div className="rounded-[28px] bg-ink text-white p-6 sm:p-8 relative overflow-hidden">
-          <div className="absolute inset-0 hero-bg" aria-hidden="true"></div>
-          <div className="relative">
-            <p className="text-[13px] font-bold text-white/65">Puntaje promedio de Colombia en lectura · PISA</p>
-            <ol className="mt-4 grid grid-cols-4 gap-2" aria-label="Lectura: 425 en 2015, 412 en 2018, 409 en 2022, 399 en 2025">
-              ${[['2015', 425], ['2018', 412], ['2022', 409], ['2025', 399]].map(([y, v], i) => html`<li key=${y} className="flex flex-col">
-                <span className=${cx('font-display font-extrabold leading-none tabular-nums', i === 3 ? 'text-teal text-[clamp(2rem,6vw,2.9rem)]' : 'text-white/85 text-[clamp(1.5rem,4.4vw,2.1rem)]')}>${v}</span>
-                <span className="mt-1.5 font-mono text-[12px] text-white/55">${y}</span>
-              </li>`)}
-            </ol>
-            <p className="mt-2 text-[13.5px] text-white/70">Promedio OCDE 2025: 461</p>
-            <div className="mt-6 pt-5 border-t border-white/15 grid sm:grid-cols-2 gap-4">
-              <p className="text-[15px] leading-snug"><span className="block font-display text-[26px] font-extrabold text-sun">Más de la mitad</span>de los estudiantes no alcanza el nivel básico de lectura.</p>
-              <p className="text-[15px] leading-snug"><span className="block font-display text-[26px] font-extrabold text-sun">7 de cada 10</span>no alcanzan el nivel básico en matemáticas.</p>
-            </div>
-            <p className="mt-5 text-[12px] text-white/50">Fuente: OCDE, resultados PISA 2015 a 2025 para Colombia.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="daniel" className="scroll-mt-32 md:scroll-mt-20 max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 grid md:grid-cols-[auto_1fr] gap-10 items-center">
-      <div className="relative mx-auto">
-        <${DanielAvatar} size=${220} className="shadow-2xl" />
-        <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-ink text-white px-4 py-1.5 text-[13px] font-bold">Daniel · 45 años · profe</span>
-      </div>
-      <div>
-        <p className="font-mono text-[12px] uppercase tracking-[.18em] text-violet-d">El anfitrión</p>
-        <h2 className="font-display text-[clamp(1.7rem,3.6vw,2.4rem)] font-extrabold text-ink mt-2 balance">Daniel no tiene todas las respuestas. Por eso busca colegas.</h2>
-        <div className="mt-5 space-y-4 text-[17px] text-ink/75 leading-relaxed max-w-prose">
-          <p>Lleva más de veinte años en el aula. Ha visto a sus estudiantes perder el interés, distraerse y conectar más con las redes que con la clase. Algunos colegas le dicen que esta generación es un caso perdido.</p>
-          <p>Él no se resigna. Está convencido de que los docentes pueden transformar la experiencia de aprender cuando comparten lo que saben y prueban cosas nuevas juntos. Fue uno de los primeros en llegar a la comunidad, y ahora recibe a quienes llegan después.</p>
-        </div>
-        <button type="button" onClick=${session ? onEnter : onJoin} className=${btn + ' cta-grad cta-pulse text-white font-bold px-5 py-3 text-[16px] mt-7 hover:-translate-y-0.5'}>${session ? 'Ir a la comunidad' : 'Únete a la comunidad digital'} <${Icon} name="arrow" size=${18} /></button>
-      </div>
-    </section>
-
-    <section id="universo" className="scroll-mt-32 md:scroll-mt-20 max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
-      <div className="grid lg:grid-cols-[.9fr_1.1fr] gap-10 lg:gap-16">
-        <div>
-          <p className="font-mono text-[12px] uppercase tracking-[.18em] text-violet-d">El universo Kuriozity</p>
-          <h2 className="font-display text-[clamp(1.8rem,4vw,2.7rem)] font-extrabold text-ink leading-[1.08] mt-3 balance">Una historia que se cuenta en muchos formatos y se termina de escribir en el aula.</h2>
-          <p className="mt-5 text-[17px] text-ink/75 leading-relaxed max-w-prose">Kuriozity cuestiona las prácticas tradicionales de enseñanza y propone otras formas de aprender. Lo hace con una serie, un pódcast, piezas gráficas y una comunidad donde los docentes no solo consumen contenidos: los producen, los reinterpretan y los comparten.</p>
-        </div>
-        <div className="grid sm:grid-cols-2 gap-4">
-          ${[['film', 'Serie audiovisual', 'La vida de Daniel y su clase de 10.º en episodios cortos.'], ['mic', 'Pódcast', 'Conversaciones sobre las preguntas que no caben en el currículo.'], ['image', 'Piezas gráficas', 'Cómics y carteles para llevar las preguntas a los pasillos.'], ['users', 'Comunidad docente', 'El espacio de prosumo: recursos, cursos y experiencias de aula.']].map(([i, t, d], k) => k === 3 ? html`<button key=${t} type="button" onClick=${session ? onEnter : onLogin} className="group text-left rounded-3xl p-5 border border-ink bg-ink text-white transition hover:-translate-y-1 hover:shadow-[0_18px_40px_-16px_rgba(106,69,245,.7)] hover:border-violet focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-teal/50 cta-pulse">
-            <span className="flex items-center justify-between"><span className="grid place-items-center w-11 h-11 rounded-2xl bg-teal text-ink"><${Icon} name=${i} size=${20} /></span><span className="grid place-items-center w-9 h-9 rounded-full bg-white/10 text-white group-hover:bg-teal group-hover:text-ink transition"><${Icon} name="arrow" size=${17} /></span></span>
-            <span className="block font-display text-[19px] font-bold mt-4">${t}</span>
-            <span className="block mt-1.5 text-[15px] leading-snug text-white/75">${d}</span>
-            <span className="mt-3 inline-flex items-center gap-1.5 text-[14px] font-bold text-teal group-hover:underline">${session ? 'Ir a la comunidad' : 'Iniciar sesión'} <${Icon} name="arrow" size=${15} /></span>
-          </button>` : html`<div key=${t} className="rounded-3xl p-5 border transition hover:-translate-y-0.5 bg-mist border-line">
-            <span className="grid place-items-center w-11 h-11 rounded-2xl bg-white text-violet-d"><${Icon} name=${i} size=${20} /></span>
-            <p className="font-display text-[19px] font-bold mt-4">${t}</p>
-            <p className="mt-1.5 text-[15px] leading-snug text-mute">${d}</p>
-          </div>`)}
-        </div>
-      </div>
-      <div className="mt-14 rounded-3xl border border-line p-5 sm:p-7">
-        <p className="text-[13px] font-bold text-mute">El recorrido que propone la comunidad</p>
-        <ol className="mt-4 flex flex-wrap items-center gap-2 sm:gap-3">
-          ${['Descubrir', 'Aprender', 'Aplicar', 'Compartir', 'Cocrear'].map((p, i) => html`<li key=${p} className="flex items-center gap-2 sm:gap-3">
-            <span className="inline-flex items-center gap-2 rounded-full bg-violet-soft px-3.5 py-2 font-display font-bold text-ink text-[15px]"><span className="font-mono text-[11px] text-violet-d">${i + 1}</span>${p}</span>
-            ${i < 4 ? html`<span className="text-mute"><${Icon} name="arrow" size=${16} /></span>` : null}
-          </li>`)}
-        </ol>
-        <button type="button" onClick=${session ? onEnter : onLogin} className=${btn + ' cta-grad cta-pulse text-white font-bold px-5 py-3 text-[16px] mt-6 hover:-translate-y-0.5'}>Ingresa a la comunidad ahora <${Icon} name="arrow" size=${18} /></button>
-      </div>
-    </section>
-
-    <section id="historias" className="scroll-mt-32 md:scroll-mt-20 bg-mist border-y border-line">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div><p className="font-mono text-[12px] uppercase tracking-[.18em] text-violet-d">Conoce sus historias</p>
-          <h2 className="font-display text-[clamp(1.7rem,3.6vw,2.4rem)] font-extrabold text-ink mt-2">Cuatro puertas al mismo relato</h2></div>
-          <p className="text-mute text-[14px] max-w-xs">Piezas en desarrollo. Las sinopsis son de demostración.</p>
-        </div>
-        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          ${STORIES.map((st, i) => html`<button key=${st.id} onClick=${() => setStory(st.id)} className="group text-left rounded-3xl bg-white border border-line overflow-hidden hover:shadow-lg hover:-translate-y-1 transition flex flex-col">
-            <div className=${cx('relative h-36 story-cover', 'sc' + i)}>
-              <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-2.5 py-1 text-[12px] font-bold text-ink"><${Icon} name=${st.icon} size=${13} />${st.format}</span>
-              <span className="absolute right-4 bottom-1 font-display font-extrabold text-[84px] leading-none text-white/25">${i % 2 ? '¿' : '?'}</span>
-            </div>
-            <div className="p-5 flex-1 flex flex-col">
-              <p className="font-mono text-[11px] uppercase tracking-[.14em] text-mute">${st.label}</p>
-              <p className="font-display text-[19px] font-bold text-ink mt-1 leading-tight">${st.title}</p>
-              <p className="text-[14px] text-mute mt-2 line-clamp-3">${st.syn}</p>
-              <span className="mt-auto pt-4 inline-flex items-center gap-1 text-[14px] font-bold text-violet-d group-hover:gap-2 transition-all">Ver sinopsis <${Icon} name="chev" size=${15} /></span>
-            </div>
-          </button>`)}
-        </div>
-      </div>
-    </section>
-
-
-    <section id="comunidad" className="scroll-mt-32 md:scroll-mt-20 px-4 sm:px-6 pb-16 sm:pb-24">
-      <div className="max-w-6xl mx-auto rounded-[32px] bg-ink text-white overflow-hidden relative cta-bg">
-        <div className="relative grid lg:grid-cols-[1.1fr_.9fr] gap-10 p-7 sm:p-12">
-          <div>
-            <p className="font-mono text-[12px] uppercase tracking-[.18em] text-teal">Comunidad docente</p>
-            <h2 className="font-display text-[clamp(2rem,4.5vw,3.2rem)] font-extrabold leading-[1.04] mt-3">Transformemos el aula juntos.</h2>
-            <p className="mt-4 text-white/75 text-[17px] max-w-lg">Un espacio privado para docentes de secundaria verificados. Encuentra recursos para tus grados, aprende con cursos cortos y comparte lo que pasa en tu aula.</p>
-            <button className=${btnTeal + ' cta-pulse pulse-white mt-7 !px-5 !py-3 text-[16px] hover:-translate-y-0.5'} onClick=${session ? onEnter : onLogin}>${session ? 'Ir a la comunidad' : 'Ingresa a la comunidad ahora'} <${Icon} name="arrow" size=${18} /></button>
-            <p className="mt-4 flex items-center gap-2 text-[13px] text-white/60"><${Icon} name="shield" size=${15} /> Comunidad con docentes verificados. Accede ahora y encuentra recursos para ti.</p>
-          </div>
-          <ul className="grid gap-3 self-center">
-            ${[['book', 'Recursos para el aula', 'Organizados por grado, de 6.º a 11.º'], ['cap', 'Cursos para docentes', 'Metodologías, TIC, IA, lectura y evaluación'], ['users', 'Comunidad', 'Experiencias, preguntas y versiones nuevas de cada actividad'], ['calendar', 'Eventos', 'Agenda de Medellín, Colombia y virtuales']].map(([i, t, d]) => html`<li key=${t} className="flex items-center gap-4 rounded-2xl bg-white/[.06] border border-white/10 p-4">
-              <span className="grid place-items-center w-10 h-10 rounded-xl bg-white/10 text-teal"><${Icon} name=${i} size=${19} /></span>
-              <div><p className="font-bold">${t}</p><p className="text-white/65 text-[14px]">${d}</p></div>
-            </li>`)}
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <footer className="border-t border-line">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 flex flex-wrap items-center justify-between gap-4">
-        <${Logo} small onClick=${() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
-        <p className="text-[13px] text-mute">Prototipo académico · Maestría en Comunicación Transmedia · Contenidos de demostración</p>
-        <${PrototypeBadge} onClick=${onInfo} />
-      </div>
-    </footer>
-
-    <${Modal} open=${!!s} onClose=${() => setStory(null)} size="max-w-lg" label="Historia">
-      ${s && html`<div>
-        <${CloseBtn} onClick=${() => setStory(null)} light />
-        <div className=${cx('relative h-44 story-cover', 'sc' + STORIES.indexOf(s))}>
-          <span className="absolute left-6 bottom-5 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-[13px] font-bold text-ink"><${Icon} name=${s.icon} size=${14} />${s.format} · ${s.label}</span>
-        </div>
-        <div className="p-6 sm:p-8">
-          <h3 className="font-display text-[26px] font-extrabold text-ink leading-tight">${s.title}</h3>
-          <p className="mt-3 text-[16px] text-ink/80 leading-relaxed">${s.syn}</p>
-          <p className="mt-4 text-[13px] text-mute rounded-xl bg-mist px-3 py-2">Pieza del universo narrativo en desarrollo. Contenido de demostración.</p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <button className=${btnP} onClick=${() => { setStory(null); session ? onEnter() : onJoin(); }}>Continuar en la comunidad <${Icon} name="arrow" size=${16} /></button>
-            <button className=${btnS} onClick=${() => setStory(null)}>Cerrar</button>
-          </div>
-        </div>
-      </div>`}
-    <//>
-  </div>`;
-}
-
 /* ===================== AUTENTICACIÓN ===================== */
 const FREE_DOMAINS = ['gmail.com','hotmail.com','outlook.com','yahoo.com','yahoo.es','live.com','icloud.com','hotmail.es','outlook.es','msn.com'];
 function domainKind(email) {
@@ -288,7 +75,7 @@ function GooglePicker({ open, onClose, onPick }) {
     <div className="p-6 sm:p-7">
       <div className="flex items-center gap-2"><${GoogleG} size=${22} /><span className="text-[15px] text-ink/80">Acceder con Google</span></div>
       <h2 className="font-display text-[22px] font-bold text-ink mt-4">Elige una cuenta</h2>
-      <p className="text-mute text-[14px]">para continuar en Kuriozity</p>
+      <p className="text-mute text-[14px]">para continuar en KURIOSITY</p>
       <p className="mt-3 text-[12.5px] rounded-lg bg-sun/15 text-[#7A4B00] px-3 py-2">Simulación: no se conecta con tu cuenta de Google real.</p>
       <ul className="mt-4 divide-y divide-line border-y border-line">
         ${accounts.map(a => html`<li key=${a.email}><button className="w-full flex items-center gap-3 py-3 px-1 text-left hover:bg-mist rounded-lg transition" onClick=${() => onPick(a.email, a.name)}>
@@ -358,7 +145,7 @@ function AuthScreen({ tab, setTab, accounts, actions, onBack, onInfo }) {
       <div className="qmarks" aria-hidden="true"><span className="qm qm0">?</span><span className="qm qm3">¿</span></div>
       <div className="relative flex items-center justify-between gap-3">
         <${Logo} light onClick=${onBack} />
-        <button className="inline-flex items-center gap-1.5 text-white/75 hover:text-white text-[14px] font-semibold" onClick=${onBack}><${Icon} name="back" size=${16} /> Volver a Kuriozity</button>
+        <button className="inline-flex items-center gap-1.5 text-white/75 hover:text-white text-[14px] font-semibold" onClick=${onBack}><${Icon} name="back" size=${16} /> Volver a KURIOSITY</button>
       </div>
       <div className="relative my-auto py-10 lg:py-0 max-w-lg">
         <p className="font-mono text-[12px] uppercase tracking-[.18em] text-teal">Comunidad docente</p>
@@ -537,7 +324,7 @@ function VerifyScreen({ me, actions, toast, onInfo }) {
         <p className="text-[14px] text-ink/70 mt-1">En la versión real estos pasos ocurren fuera de la plataforma. Aquí puedes recorrerlos sin enviar nada.</p>
         <div className="mt-4 flex flex-wrap gap-3">
           ${state === 'email' && html`<button className=${btn + ' bg-ink text-white hover:bg-ink-2 px-4 py-2.5'} onClick=${actions.verifyEmail}><${Icon} name="mail" size=${17} /> Abrir el enlace del correo</button>`}
-          ${state === 'teacher' && html`<button className=${btn + ' bg-ink text-white hover:bg-ink-2 px-4 py-2.5'} onClick=${actions.approveTeacher}><${Icon} name="shield" size=${17} /> Aprobar como moderador de Kuriozity</button>`}
+          ${state === 'teacher' && html`<button className=${btn + ' bg-ink text-white hover:bg-ink-2 px-4 py-2.5'} onClick=${actions.approveTeacher}><${Icon} name="shield" size=${17} /> Aprobar como moderador de KURIOSITY</button>`}
         </div>
       </section>`}
 
