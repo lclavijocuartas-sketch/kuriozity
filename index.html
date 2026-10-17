@@ -1129,7 +1129,7 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
         ].map(([t, items]) => html`<nav key=${t} aria-label=${t}><p className="text-[13px] font-bold text-white/50">${t}</p><ul className="mt-3 grid gap-2">${items.map(([l, fn]) => html`<li key=${l}><button onClick=${fn} className="text-[15px] text-white/80 hover:text-white text-left">${l}</button></li>`)}</ul></nav>`)}
       </div>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-10 flex flex-wrap items-center justify-between gap-4 text-[12.5px] text-white/45">
-        <p>Prototipo académico · Maestría en Comunicación Transmedia</p>
+        <p>Prototipo académico · Maestría en Comunicación Transmedia · EAFIT 2026</p>
         <${PrototypeBadge} light onClick=${onInfo} />
       </div>
     </footer>
