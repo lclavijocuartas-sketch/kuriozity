@@ -315,7 +315,7 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
       <div className="absolute inset-0 bg-gradient-to-b from-[#05061A]/70 via-transparent to-transparent" aria-hidden="true"></div>
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#05061A] to-transparent" aria-hidden="true"></div>
       <div className="hero-horizon" aria-hidden="true"></div>
-      <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 pt-28 pb-14 sm:pt-32 sm:pb-16">
+      <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 pt-28 pb-28 sm:pt-32 sm:pb-28">
         <h1>
           <span className="block font-display font-extrabold text-[clamp(2.3rem,6.4vw,5.1rem)] leading-[1] tracking-[-.025em] balance">El futuro no necesita más respuestas.</span>
           <span className="block serif grad-text text-[clamp(2.7rem,7.6vw,6.2rem)] leading-[1.02] mt-2 pb-2">Necesita mejores preguntas.</span>
@@ -328,6 +328,10 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
           <button onClick=${() => setMedia('teaser')} className=${btn + ' border border-white/25 text-white hover:bg-white/10 px-5 py-3.5 text-[16px] backdrop-blur-sm'}><span className="grid place-items-center w-7 h-7 rounded-full bg-white text-[#05061A]"><${Icon} name="play" size=${12} fill="currentColor" /></span>Ver el teaser</button>
         </div>
       </div>
+      <button onClick=${() => go('conflicto')} className="absolute left-1/2 -translate-x-1/2 bottom-5 z-10 flex flex-col items-center gap-1.5 text-white/70 hover:text-white group" aria-label="Bajar a la siguiente sección">
+        <span className="font-mono text-[10.5px] uppercase tracking-[.24em]">Desliza</span>
+        <span className="grid place-items-center w-10 h-10 rounded-full border border-white/30 bg-white/[.06] backdrop-blur group-hover:bg-white/15 group-hover:border-white/60 transition"><span className="scroll-cue"><${Icon} name="chevdown" size=${18} /></span></span>
+      </button>
     </section>
 
     <!-- 2 · EL CONFLICTO -->
