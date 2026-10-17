@@ -358,7 +358,7 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid lg:grid-cols-[1fr_auto] gap-6 items-end">
           <div>
-            <${Eyebrow}>Las historias</${Eyebrow}>
+            <${Eyebrow}>Proyecto Transmedia</${Eyebrow}>
             <h2 className="mt-4"><span className="block font-display font-extrabold text-[clamp(2.3rem,5.6vw,4.2rem)] leading-[1] tracking-[-.02em]">Tres historias.</span><span className="block serif grad-text text-[clamp(2.4rem,6vw,4.6rem)] leading-[1.05] pb-1">Un futuro en juego.</span></h2>
           </div>
           <p className="max-w-md text-[17px] text-white/70 leading-relaxed">Tres personas. Tres perspectivas. Una misma pregunta: ¿qué sucede cuando dejamos de despertar la curiosidad?</p>
