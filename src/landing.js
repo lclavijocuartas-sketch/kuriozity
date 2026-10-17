@@ -308,14 +308,14 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
     </header>
 
     <!-- 1 · HERO -->
-    <section id="inicio" className="relative overflow-hidden min-h-[640px] flex items-center">
+    <section id="inicio" className="relative overflow-hidden flex items-center">
       <div className="absolute inset-0 hero-aurora" aria-hidden="true"></div>
       ${MEDIA.heroVideo && html`<video className="absolute inset-0 w-full h-full object-cover opacity-70" style=${{ objectPosition: '60% center' }} src=${MEDIA.heroVideo} poster=${MEDIA.heroPoster} autoPlay=${!REDUCED_MOTION} muted loop playsInline preload="auto" aria-hidden="true"></video>`}
       <div className="absolute inset-0 bg-gradient-to-r from-[#05061A] via-[#05061A]/80 to-[#05061A]/10" aria-hidden="true"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-[#05061A]/70 via-transparent to-transparent" aria-hidden="true"></div>
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#05061A] to-transparent" aria-hidden="true"></div>
       <div className="hero-horizon" aria-hidden="true"></div>
-      <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 pt-32 pb-20 sm:pt-40 sm:pb-28">
+      <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 pt-28 pb-14 sm:pt-32 sm:pb-16">
         <h1>
           <span className="block font-display font-extrabold text-[clamp(2.3rem,6.4vw,5.1rem)] leading-[1] tracking-[-.025em] balance">El futuro no necesita más respuestas.</span>
           <span className="block serif grad-text text-[clamp(2.7rem,7.6vw,6.2rem)] leading-[1.02] mt-2 pb-2">Necesita mejores preguntas.</span>
@@ -328,7 +328,6 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
           <button onClick=${() => setMedia('teaser')} className=${btn + ' border border-white/25 text-white hover:bg-white/10 px-5 py-3.5 text-[16px] backdrop-blur-sm'}><span className="grid place-items-center w-7 h-7 rounded-full bg-white text-[#05061A]"><${Icon} name="play" size=${12} fill="currentColor" /></span>Ver el teaser</button>
         </div>
       </div>
-      <button onClick=${() => go('conflicto')} className="absolute left-1/2 -translate-x-1/2 bottom-6 text-white/50 hover:text-white hidden sm:flex flex-col items-center gap-1 text-[11px] font-mono uppercase tracking-[.2em]" aria-label="Seguir bajando"><span>Bajar</span><span className="scroll-cue"><${Icon} name="chevdown" size=${18} /></span></button>
     </section>
 
     <!-- 2 · EL CONFLICTO -->
