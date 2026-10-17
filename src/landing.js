@@ -405,7 +405,6 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
           <${Eyebrow}>Comunidad docente</${Eyebrow}>
           <h2 className="mt-4"><span className="block font-display font-extrabold text-[clamp(2.3rem,5.6vw,4.2rem)] leading-[1] tracking-[-.02em]">El futuro también se enseña.</span><span className="block serif grad-text text-[clamp(2.2rem,5.4vw,4rem)] leading-[1.08] pb-1">Y comienza en nuestras aulas.</span></h2>
           <div className="mt-7 space-y-4 text-[17px] text-white/75 leading-relaxed max-w-[56ch]">
-            <p>No podemos cambiar el pasado. Pero sí podemos transformar la manera en que enseñamos hoy.</p>
             <p>Una comunidad para docentes que creen que enseñar es mucho más que transmitir conocimientos: es despertar preguntas, inspirar nuevas ideas y formar personas capaces de transformar su mundo.</p>
           </div>
           <figure className="mt-8 flex items-start gap-4 lp-glass rounded-[22px] p-5 max-w-[56ch]">
