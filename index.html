@@ -443,7 +443,10 @@ function GoogleG({ size = 18 }) {
 
 const DANIEL_SVG = `<svg viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="dgr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6A45F5"/><stop offset="1" stop-color="#14B8A6"/></linearGradient><clipPath id="dcl"><circle cx="60" cy="60" r="60"/></clipPath></defs><g clip-path="url(#dcl)"><rect width="120" height="120" fill="url(#dgr)"/><text x="88" y="44" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="40" fill="#ffffff" fill-opacity=".22">?</text><path d="M14 124c4-24 22-36 46-36s42 12 46 36z" fill="#0E1A3C"/><path d="M48 89l12 13 12-13z" fill="#EDEBFA"/><rect x="51" y="72" width="18" height="18" rx="7" fill="#A86E48"/><ellipse cx="39" cy="56" rx="4.5" ry="6.5" fill="#A86E48"/><ellipse cx="81" cy="56" rx="4.5" ry="6.5" fill="#A86E48"/><ellipse cx="60" cy="53" rx="21" ry="25" fill="#C1865D"/><path d="M38 50c-3-17 8-27 22-27s26 9 22 27c-3-8-8-13-15-14-6 4-16 7-29 14z" fill="#3A3E4C"/><path d="M45 35c6-5 15-6 23-3M64 29c4 0 9 2 12 6" stroke="#A9AEC0" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M39 58c1 15 9 25 21 25s20-10 21-25c-3 6-8 9-12 9H51c-4 0-9-3-12-9z" fill="#4B4F5F"/><path d="M52 69c2.5 2.2 5 3 8 3s5.5-.8 8-3" stroke="#C1865D" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M45 45c3-2 7-2 10 0M65 45c3-2 7-2 10 0" stroke="#3A3E4C" stroke-width="2.2" fill="none" stroke-linecap="round"/><rect x="43.5" y="48.5" width="14" height="10.5" rx="4" fill="#ffffff" fill-opacity=".18" stroke="#0E1A3C" stroke-width="2.2"/><rect x="62.5" y="48.5" width="14" height="10.5" rx="4" fill="#ffffff" fill-opacity=".18" stroke="#0E1A3C" stroke-width="2.2"/><path d="M57.5 53h5" stroke="#0E1A3C" stroke-width="2"/><circle cx="50.5" cy="54" r="1.9" fill="#0E1A3C"/><circle cx="69.5" cy="54" r="1.9" fill="#0E1A3C"/></g></svg>`;
 function DanielAvatar({ size = 40, className = '' }) {
-  return html`<span role="img" aria-label="Daniel" className=${cx('inline-block shrink-0 rounded-full overflow-hidden', className)} style=${{ width: size, height: size }} dangerouslySetInnerHTML=${{ __html: DANIEL_SVG }}></span>`;
+  // Retrato oficial de Daniel; la ilustración DANIEL_SVG queda como respaldo si la imagen no carga.
+  const [ok, setOk] = useState(true);
+  if (!ok) return html`<span role="img" aria-label="Daniel" className=${cx('inline-block shrink-0 rounded-full overflow-hidden', className)} style=${{ width: size, height: size }} dangerouslySetInnerHTML=${{ __html: DANIEL_SVG }}></span>`;
+  return html`<img src="media/daniel-avatar.jpg" alt="Daniel" onError=${() => setOk(false)} className=${cx('inline-block shrink-0 rounded-full object-cover bg-ink', className)} style=${{ width: size, height: size }} draggable="false" />`;
 }
 const initials = n => (n || '?').split(' ').filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase();
 function Avatar({ person, size = 40, className = '' }) {
@@ -453,13 +456,10 @@ function Avatar({ person, size = 40, className = '' }) {
   return html`<span aria-hidden="true" className=${cx('inline-grid place-items-center rounded-full font-display font-bold text-white shrink-0', className)} style=${{ width: size, height: size, background: person.color || '#24356F', fontSize: size * 0.38 }}>${initials(person.name)}</span>`;
 }
 
+/* Logotipo oficial de KURIOSITY: blanco sobre fondos oscuros y azul noche sobre fondos claros (misma forma, sin redibujar). */
 function Logo({ light = false, onClick, small = false }) {
-  return html`<button type="button" onClick=${onClick} className="flex items-center gap-2.5 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal" aria-label="KURIOSITY, ir al inicio">
-    <span className=${cx('relative grid place-items-center rounded-[11px] bg-gradient-to-br from-violet to-teal', small ? 'w-8 h-8' : 'w-9 h-9')}>
-      <span className="font-display font-extrabold text-white text-[20px] leading-none -mt-0.5">?</span>
-      <span className=${cx('absolute -right-1 -top-1 w-3 h-3 rounded-full bg-sun ring-2', light ? 'ring-ink' : 'ring-white')}></span>
-    </span>
-    <span className=${cx('font-display font-extrabold tracking-[.04em]', small ? 'text-[17px]' : 'text-[19px]', light ? 'text-white' : 'text-ink')}>KURIOSITY</span>
+  return html`<button type="button" onClick=${onClick} className="flex items-center rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4 focus-visible:ring-offset-transparent" aria-label="KURIOSITY, ir al inicio">
+    <img src=${light ? 'media/logo-kuriosity-blanco.png' : 'media/logo-kuriosity-azul.png'} alt="KURIOSITY" className="block w-auto select-none" style=${{ height: small ? 18 : 22 }} draggable="false" />
   </button>`;
 }
 
@@ -687,13 +687,16 @@ function PrototypeInfo({ open, onClose }) {
    Nodo central del universo transmedia: hero, conflicto, tres historias,
    mapa del universo, invitación a la comunidad docente y footer. */
 
-/* Recursos oficiales: reemplaza null por la URL del archivo cuando esté listo.
-   Las imágenes y videos deben subirse junto al prototipo (no se permiten enlaces a otros sitios para medios). */
+/* Recursos oficiales (carpeta media/, publicada junto a la página).
+   Para reemplazar un recurso, sube el archivo con el mismo nombre o cambia la ruta aquí. Usa null para mostrar el espacio reservado. */
 const MEDIA = {
-  heroVideo: null,   // video de fondo sutil del hero (mp4, sin audio)
-  teaser: null,      // teaser audiovisual (mp4)
-  characters: { simon: null, daniel: null, emma: null }, // imágenes oficiales de los personajes
+  heroVideo: 'media/hero-emma.mp4',     // Emma en 2040, fondo del hero (sin audio, en bucle)
+  heroPoster: 'media/hero-emma.jpg',    // cuadro fijo mientras carga el video o si se reducen las animaciones
+  teaser: 'media/teaser.mp4',           // teaser audiovisual
+  teaserPoster: 'media/teaser-poster.jpg',
+  characters: { simon: 'media/simon.jpg', daniel: 'media/daniel.jpg', emma: 'media/emma.jpg' },
 };
+const REDUCED_MOTION = (() => { try { return window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return false; } })();
 
 const CHARACTERS = [
   { id: 'simon', name: 'Simón', year: '2026', q: '¿Y si el problema no es que no quiera aprender?',
@@ -752,7 +755,7 @@ function Eyebrow({ children, className = '' }) {
 /* Imagen oficial del personaje o contenedor reservado claramente identificado. */
 function CharacterMedia({ c, className = '', big = false }) {
   const src = MEDIA.characters[c.id];
-  if (src) return html`<img src=${src} alt=${'Imagen oficial de ' + c.name} className=${cx('absolute inset-0 w-full h-full object-cover', className)} />`;
+  if (src) return html`<img src=${src} alt=${c.name + ', ' + c.year} loading="lazy" className=${cx('absolute inset-0 w-full h-full object-cover', className)} style=${{ objectPosition: 'center 18%' }} />`;
   return html`<div className=${cx('absolute inset-0 overflow-hidden', className)} style=${{ background: `radial-gradient(90% 70% at 70% 15%, ${c.c1}55, transparent 60%), radial-gradient(80% 60% at 10% 100%, ${c.c2}40, transparent 60%), #0B0D2A` }}>
     <span className="absolute -right-4 -bottom-10 font-display font-extrabold leading-none select-none" style=${{ fontSize: big ? 360 : 300, color: c.c1, opacity: .16 }} aria-hidden="true">${c.name[0]}</span>
     <span className="absolute left-1/2 top-[22%] -translate-x-1/2 inline-flex items-center gap-1.5 whitespace-nowrap max-w-[90%] rounded-full border border-dashed border-white/35 bg-black/25 px-2.5 py-1 font-mono text-[10.5px] uppercase tracking-[.12em] text-white/70"><${Icon} name="image" size=${12} />Imagen oficial · pendiente</span>
@@ -771,7 +774,7 @@ function MediaModal({ kind, onClose, onStory }) {
       </div>
       <div className="p-5 sm:p-8 pt-4">
         ${kind === 'teaser' && (MEDIA.teaser
-          ? html`<video src=${MEDIA.teaser} controls playsInline className="w-full rounded-2xl bg-black aspect-video"></video>`
+          ? html`<video src=${MEDIA.teaser} poster=${MEDIA.teaserPoster} controls autoPlay playsInline preload="metadata" className="w-full rounded-2xl bg-black aspect-video"></video>`
           : html`<div className="relative aspect-video rounded-2xl overflow-hidden lp-frame grid place-items-center text-center">
               <div className="absolute inset-0 hero-aurora opacity-70" aria-hidden="true"></div>
               <div className="relative px-6"><span className="inline-grid place-items-center w-16 h-16 rounded-full border border-white/30 bg-white/10"><${Icon} name="play" size=${24} fill="currentColor" /></span>
@@ -992,7 +995,9 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
     <!-- 1 · HERO -->
     <section id="inicio" className="relative overflow-hidden min-h-[640px] flex items-center">
       <div className="absolute inset-0 hero-aurora" aria-hidden="true"></div>
-      ${MEDIA.heroVideo && html`<video className="absolute inset-0 w-full h-full object-cover opacity-30" src=${MEDIA.heroVideo} autoPlay muted loop playsInline aria-hidden="true"></video>`}
+      ${MEDIA.heroVideo && html`<video className="absolute inset-0 w-full h-full object-cover opacity-70" style=${{ objectPosition: '60% center' }} src=${MEDIA.heroVideo} poster=${MEDIA.heroPoster} autoPlay=${!REDUCED_MOTION} muted loop playsInline preload="auto" aria-hidden="true"></video>`}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#05061A] via-[#05061A]/80 to-[#05061A]/10" aria-hidden="true"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#05061A]/70 via-transparent to-transparent" aria-hidden="true"></div>
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#05061A] to-transparent" aria-hidden="true"></div>
       <div className="hero-horizon" aria-hidden="true"></div>
       <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 pt-32 pb-20 sm:pt-40 sm:pb-28">
@@ -1047,10 +1052,10 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
           <p className="max-w-md text-[17px] text-white/70 leading-relaxed">Tres personas. Tres perspectivas. Una misma pregunta: ¿qué sucede cuando dejamos de despertar la curiosidad?</p>
         </div>
         <div className="mt-12 grid md:grid-cols-3 gap-5">
-          ${CHARACTERS.map(c => html`<article key=${c.id} className="story-card group relative rounded-[28px] overflow-hidden min-h-[560px] flex flex-col justify-end isolate" style=${{ '--c1': c.c1, '--c2': c.c2 }}>
+          ${CHARACTERS.map(c => html`<article key=${c.id} className="story-card group relative rounded-[28px] overflow-hidden min-h-[640px] flex flex-col justify-end isolate" style=${{ '--c1': c.c1, '--c2': c.c2 }}>
             <div className="absolute inset-0 -z-10 transition duration-700 group-hover:scale-105"><${CharacterMedia} c=${c} /></div>
-            <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#05061A] via-[#05061A]/70 to-transparent"></div>
-            <div className="absolute right-5 top-4 -z-10 font-mono font-medium text-[44px] leading-none tracking-[-.04em]" style=${{ color: c.c1 }}>${c.year}</div>
+            <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#05061A] from-[38%] via-[#05061A]/75 via-[58%] to-transparent to-[85%]"></div>
+            <div className="absolute right-4 top-4 -z-10 rounded-full bg-[#05061A]/55 backdrop-blur px-3 py-1 font-mono font-medium text-[22px] leading-none tracking-[-.02em]" style=${{ color: c.c1 }}>${c.year}</div>
             <div className="p-6 sm:p-7">
               <p className="font-display font-extrabold text-[30px] leading-none">${c.name}</p>
               <p className="mt-4 serif text-[25px] leading-[1.15] text-white">${c.q}</p>

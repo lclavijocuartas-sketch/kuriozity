@@ -75,7 +75,10 @@ function GoogleG({ size = 18 }) {
 
 const DANIEL_SVG = `<svg viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="dgr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6A45F5"/><stop offset="1" stop-color="#14B8A6"/></linearGradient><clipPath id="dcl"><circle cx="60" cy="60" r="60"/></clipPath></defs><g clip-path="url(#dcl)"><rect width="120" height="120" fill="url(#dgr)"/><text x="88" y="44" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="40" fill="#ffffff" fill-opacity=".22">?</text><path d="M14 124c4-24 22-36 46-36s42 12 46 36z" fill="#0E1A3C"/><path d="M48 89l12 13 12-13z" fill="#EDEBFA"/><rect x="51" y="72" width="18" height="18" rx="7" fill="#A86E48"/><ellipse cx="39" cy="56" rx="4.5" ry="6.5" fill="#A86E48"/><ellipse cx="81" cy="56" rx="4.5" ry="6.5" fill="#A86E48"/><ellipse cx="60" cy="53" rx="21" ry="25" fill="#C1865D"/><path d="M38 50c-3-17 8-27 22-27s26 9 22 27c-3-8-8-13-15-14-6 4-16 7-29 14z" fill="#3A3E4C"/><path d="M45 35c6-5 15-6 23-3M64 29c4 0 9 2 12 6" stroke="#A9AEC0" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M39 58c1 15 9 25 21 25s20-10 21-25c-3 6-8 9-12 9H51c-4 0-9-3-12-9z" fill="#4B4F5F"/><path d="M52 69c2.5 2.2 5 3 8 3s5.5-.8 8-3" stroke="#C1865D" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M45 45c3-2 7-2 10 0M65 45c3-2 7-2 10 0" stroke="#3A3E4C" stroke-width="2.2" fill="none" stroke-linecap="round"/><rect x="43.5" y="48.5" width="14" height="10.5" rx="4" fill="#ffffff" fill-opacity=".18" stroke="#0E1A3C" stroke-width="2.2"/><rect x="62.5" y="48.5" width="14" height="10.5" rx="4" fill="#ffffff" fill-opacity=".18" stroke="#0E1A3C" stroke-width="2.2"/><path d="M57.5 53h5" stroke="#0E1A3C" stroke-width="2"/><circle cx="50.5" cy="54" r="1.9" fill="#0E1A3C"/><circle cx="69.5" cy="54" r="1.9" fill="#0E1A3C"/></g></svg>`;
 function DanielAvatar({ size = 40, className = '' }) {
-  return html`<span role="img" aria-label="Daniel" className=${cx('inline-block shrink-0 rounded-full overflow-hidden', className)} style=${{ width: size, height: size }} dangerouslySetInnerHTML=${{ __html: DANIEL_SVG }}></span>`;
+  // Retrato oficial de Daniel; la ilustración DANIEL_SVG queda como respaldo si la imagen no carga.
+  const [ok, setOk] = useState(true);
+  if (!ok) return html`<span role="img" aria-label="Daniel" className=${cx('inline-block shrink-0 rounded-full overflow-hidden', className)} style=${{ width: size, height: size }} dangerouslySetInnerHTML=${{ __html: DANIEL_SVG }}></span>`;
+  return html`<img src="media/daniel-avatar.jpg" alt="Daniel" onError=${() => setOk(false)} className=${cx('inline-block shrink-0 rounded-full object-cover bg-ink', className)} style=${{ width: size, height: size }} draggable="false" />`;
 }
 const initials = n => (n || '?').split(' ').filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase();
 function Avatar({ person, size = 40, className = '' }) {
@@ -85,13 +88,10 @@ function Avatar({ person, size = 40, className = '' }) {
   return html`<span aria-hidden="true" className=${cx('inline-grid place-items-center rounded-full font-display font-bold text-white shrink-0', className)} style=${{ width: size, height: size, background: person.color || '#24356F', fontSize: size * 0.38 }}>${initials(person.name)}</span>`;
 }
 
+/* Logotipo oficial de KURIOSITY: blanco sobre fondos oscuros y azul noche sobre fondos claros (misma forma, sin redibujar). */
 function Logo({ light = false, onClick, small = false }) {
-  return html`<button type="button" onClick=${onClick} className="flex items-center gap-2.5 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal" aria-label="KURIOSITY, ir al inicio">
-    <span className=${cx('relative grid place-items-center rounded-[11px] bg-gradient-to-br from-violet to-teal', small ? 'w-8 h-8' : 'w-9 h-9')}>
-      <span className="font-display font-extrabold text-white text-[20px] leading-none -mt-0.5">?</span>
-      <span className=${cx('absolute -right-1 -top-1 w-3 h-3 rounded-full bg-sun ring-2', light ? 'ring-ink' : 'ring-white')}></span>
-    </span>
-    <span className=${cx('font-display font-extrabold tracking-[.04em]', small ? 'text-[17px]' : 'text-[19px]', light ? 'text-white' : 'text-ink')}>KURIOSITY</span>
+  return html`<button type="button" onClick=${onClick} className="flex items-center rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-4 focus-visible:ring-offset-transparent" aria-label="KURIOSITY, ir al inicio">
+    <img src=${light ? 'media/logo-kuriosity-blanco.png' : 'media/logo-kuriosity-azul.png'} alt="KURIOSITY" className="block w-auto select-none" style=${{ height: small ? 18 : 22 }} draggable="false" />
   </button>`;
 }
 

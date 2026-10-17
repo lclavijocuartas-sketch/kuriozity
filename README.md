@@ -15,9 +15,17 @@ Rediseño completo de la página pública como nodo central del universo transme
 
 El nombre se corrigió a **KURIOSITY** en toda la interfaz visible. La comunidad docente se conserva sin cambios funcionales.
 
-### Recursos oficiales pendientes
+### Recursos oficiales (`media/`)
 
-En `src/landing.js`, el objeto `MEDIA` reserva los espacios para el video de fondo del hero, el teaser y las imágenes oficiales de Simón, Daniel y Emma. Mientras estén en `null`, la página muestra contenedores identificados como pendientes.
+| Archivo | Uso |
+|---|---|
+| `logo-kuriosity-blanco.png` / `logo-kuriosity-azul.png` | Logotipo sobre fondos oscuros / claros |
+| `simon.jpg`, `daniel.jpg`, `emma.jpg` | Tarjetas e historias de los personajes |
+| `daniel-avatar.jpg` | Daniel en la comunidad (guías, consejos, bienvenida) |
+| `hero-emma.mp4` + `hero-emma.jpg` | Video de fondo del hero y su cuadro fijo |
+| `teaser.mp4` + `teaser-poster.jpg` | Teaser audiovisual |
+
+Las rutas se configuran en el objeto `MEDIA` de `src/landing.js`. Para reemplazar un recurso, sube un archivo con el mismo nombre.
 
 ## Versión 1 (v1) · rama `v1`
 

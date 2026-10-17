@@ -2,13 +2,16 @@
    Nodo central del universo transmedia: hero, conflicto, tres historias,
    mapa del universo, invitación a la comunidad docente y footer. */
 
-/* Recursos oficiales: reemplaza null por la URL del archivo cuando esté listo.
-   Las imágenes y videos deben subirse junto al prototipo (no se permiten enlaces a otros sitios para medios). */
+/* Recursos oficiales (carpeta media/, publicada junto a la página).
+   Para reemplazar un recurso, sube el archivo con el mismo nombre o cambia la ruta aquí. Usa null para mostrar el espacio reservado. */
 const MEDIA = {
-  heroVideo: null,   // video de fondo sutil del hero (mp4, sin audio)
-  teaser: null,      // teaser audiovisual (mp4)
-  characters: { simon: null, daniel: null, emma: null }, // imágenes oficiales de los personajes
+  heroVideo: 'media/hero-emma.mp4',     // Emma en 2040, fondo del hero (sin audio, en bucle)
+  heroPoster: 'media/hero-emma.jpg',    // cuadro fijo mientras carga el video o si se reducen las animaciones
+  teaser: 'media/teaser.mp4',           // teaser audiovisual
+  teaserPoster: 'media/teaser-poster.jpg',
+  characters: { simon: 'media/simon.jpg', daniel: 'media/daniel.jpg', emma: 'media/emma.jpg' },
 };
+const REDUCED_MOTION = (() => { try { return window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return false; } })();
 
 const CHARACTERS = [
   { id: 'simon', name: 'Simón', year: '2026', q: '¿Y si el problema no es que no quiera aprender?',
@@ -67,7 +70,7 @@ function Eyebrow({ children, className = '' }) {
 /* Imagen oficial del personaje o contenedor reservado claramente identificado. */
 function CharacterMedia({ c, className = '', big = false }) {
   const src = MEDIA.characters[c.id];
-  if (src) return html`<img src=${src} alt=${'Imagen oficial de ' + c.name} className=${cx('absolute inset-0 w-full h-full object-cover', className)} />`;
+  if (src) return html`<img src=${src} alt=${c.name + ', ' + c.year} loading="lazy" className=${cx('absolute inset-0 w-full h-full object-cover', className)} style=${{ objectPosition: 'center 18%' }} />`;
   return html`<div className=${cx('absolute inset-0 overflow-hidden', className)} style=${{ background: `radial-gradient(90% 70% at 70% 15%, ${c.c1}55, transparent 60%), radial-gradient(80% 60% at 10% 100%, ${c.c2}40, transparent 60%), #0B0D2A` }}>
     <span className="absolute -right-4 -bottom-10 font-display font-extrabold leading-none select-none" style=${{ fontSize: big ? 360 : 300, color: c.c1, opacity: .16 }} aria-hidden="true">${c.name[0]}</span>
     <span className="absolute left-1/2 top-[22%] -translate-x-1/2 inline-flex items-center gap-1.5 whitespace-nowrap max-w-[90%] rounded-full border border-dashed border-white/35 bg-black/25 px-2.5 py-1 font-mono text-[10.5px] uppercase tracking-[.12em] text-white/70"><${Icon} name="image" size=${12} />Imagen oficial · pendiente</span>
@@ -86,7 +89,7 @@ function MediaModal({ kind, onClose, onStory }) {
       </div>
       <div className="p-5 sm:p-8 pt-4">
         ${kind === 'teaser' && (MEDIA.teaser
-          ? html`<video src=${MEDIA.teaser} controls playsInline className="w-full rounded-2xl bg-black aspect-video"></video>`
+          ? html`<video src=${MEDIA.teaser} poster=${MEDIA.teaserPoster} controls autoPlay playsInline preload="metadata" className="w-full rounded-2xl bg-black aspect-video"></video>`
           : html`<div className="relative aspect-video rounded-2xl overflow-hidden lp-frame grid place-items-center text-center">
               <div className="absolute inset-0 hero-aurora opacity-70" aria-hidden="true"></div>
               <div className="relative px-6"><span className="inline-grid place-items-center w-16 h-16 rounded-full border border-white/30 bg-white/10"><${Icon} name="play" size=${24} fill="currentColor" /></span>
@@ -307,7 +310,9 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
     <!-- 1 · HERO -->
     <section id="inicio" className="relative overflow-hidden min-h-[640px] flex items-center">
       <div className="absolute inset-0 hero-aurora" aria-hidden="true"></div>
-      ${MEDIA.heroVideo && html`<video className="absolute inset-0 w-full h-full object-cover opacity-30" src=${MEDIA.heroVideo} autoPlay muted loop playsInline aria-hidden="true"></video>`}
+      ${MEDIA.heroVideo && html`<video className="absolute inset-0 w-full h-full object-cover opacity-70" style=${{ objectPosition: '60% center' }} src=${MEDIA.heroVideo} poster=${MEDIA.heroPoster} autoPlay=${!REDUCED_MOTION} muted loop playsInline preload="auto" aria-hidden="true"></video>`}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#05061A] via-[#05061A]/80 to-[#05061A]/10" aria-hidden="true"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#05061A]/70 via-transparent to-transparent" aria-hidden="true"></div>
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#05061A] to-transparent" aria-hidden="true"></div>
       <div className="hero-horizon" aria-hidden="true"></div>
       <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 pt-32 pb-20 sm:pt-40 sm:pb-28">
@@ -362,10 +367,10 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
           <p className="max-w-md text-[17px] text-white/70 leading-relaxed">Tres personas. Tres perspectivas. Una misma pregunta: ¿qué sucede cuando dejamos de despertar la curiosidad?</p>
         </div>
         <div className="mt-12 grid md:grid-cols-3 gap-5">
-          ${CHARACTERS.map(c => html`<article key=${c.id} className="story-card group relative rounded-[28px] overflow-hidden min-h-[560px] flex flex-col justify-end isolate" style=${{ '--c1': c.c1, '--c2': c.c2 }}>
+          ${CHARACTERS.map(c => html`<article key=${c.id} className="story-card group relative rounded-[28px] overflow-hidden min-h-[640px] flex flex-col justify-end isolate" style=${{ '--c1': c.c1, '--c2': c.c2 }}>
             <div className="absolute inset-0 -z-10 transition duration-700 group-hover:scale-105"><${CharacterMedia} c=${c} /></div>
-            <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#05061A] via-[#05061A]/70 to-transparent"></div>
-            <div className="absolute right-5 top-4 -z-10 font-mono font-medium text-[44px] leading-none tracking-[-.04em]" style=${{ color: c.c1 }}>${c.year}</div>
+            <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#05061A] from-[38%] via-[#05061A]/75 via-[58%] to-transparent to-[85%]"></div>
+            <div className="absolute right-4 top-4 -z-10 rounded-full bg-[#05061A]/55 backdrop-blur px-3 py-1 font-mono font-medium text-[22px] leading-none tracking-[-.02em]" style=${{ color: c.c1 }}>${c.year}</div>
             <div className="p-6 sm:p-7">
               <p className="font-display font-extrabold text-[30px] leading-none">${c.name}</p>
               <p className="mt-4 serif text-[25px] leading-[1.15] text-white">${c.q}</p>
