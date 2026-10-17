@@ -338,8 +338,7 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
       </div>
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 items-end">
         <div>
-          <${Eyebrow}>El conflicto</${Eyebrow}>
-          <h2 className="mt-4"><span className="block font-display font-extrabold text-[clamp(2.3rem,5.6vw,4.2rem)] leading-[1] tracking-[-.02em]">El mundo cambió.</span><span className="block serif text-[clamp(2.4rem,6vw,4.6rem)] leading-[1.05] text-[#C9B8FF]">¿Y la forma de enseñar?</span></h2>
+          <h2><span className="block font-display font-extrabold text-[clamp(2.3rem,5.6vw,4.2rem)] leading-[1] tracking-[-.02em]">El mundo cambió.</span><span className="block serif text-[clamp(2.4rem,6vw,4.6rem)] leading-[1.05] text-[#C9B8FF]">¿Y la forma de enseñar?</span></h2>
         </div>
         <div className="lp-glass rounded-[24px] p-6 sm:p-7 space-y-4 text-[17px] leading-relaxed text-white/80">
           <p>Las nuevas generaciones crecen entre pantallas, redes sociales, inteligencia artificial y un universo de contenidos que transforma su manera de relacionarse con el conocimiento.</p>
