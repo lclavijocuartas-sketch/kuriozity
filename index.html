@@ -1000,7 +1000,7 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
       <div className="absolute inset-0 bg-gradient-to-b from-[#05061A]/70 via-transparent to-transparent" aria-hidden="true"></div>
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#05061A] to-transparent" aria-hidden="true"></div>
       <div className="hero-horizon" aria-hidden="true"></div>
-      <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 pt-28 pb-28 sm:pt-32 sm:pb-28">
+      <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 pt-24 pb-24 sm:pt-28 sm:pb-24">
         <h1>
           <span className="block font-display font-extrabold text-[clamp(2.3rem,6.4vw,5.1rem)] leading-[1] tracking-[-.025em] balance">El futuro no necesita más respuestas.</span>
           <span className="block serif grad-text text-[clamp(2.7rem,7.6vw,6.2rem)] leading-[1.02] mt-2 pb-2">Necesita mejores preguntas.</span>
@@ -1042,7 +1042,7 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
     </section>
 
     <!-- 3 · TRES HISTORIAS -->
-    <section id="historias" className="relative pt-12 pb-24 sm:pt-16 sm:pb-32 scroll-mt-16">
+    <section id="historias" className="relative pt-12 pb-12 sm:pt-16 sm:pb-16 scroll-mt-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid lg:grid-cols-[1fr_auto] gap-6 items-end">
           <div>
@@ -1051,7 +1051,7 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
           </div>
           <p className="max-w-md text-[17px] text-white/70 leading-relaxed">Tres personas. Tres perspectivas. Una misma pregunta: ¿qué sucede cuando dejamos de despertar la curiosidad?</p>
         </div>
-        <div className="mt-12 grid md:grid-cols-3 gap-5">
+        <div className="mt-8 grid md:grid-cols-3 gap-5">
           ${CHARACTERS.map(c => html`<article key=${c.id} className="story-card group relative rounded-[28px] overflow-hidden min-h-[640px] flex flex-col justify-end isolate" style=${{ '--c1': c.c1, '--c2': c.c2 }}>
             <div className="absolute inset-0 -z-10 transition duration-700 group-hover:scale-105"><${CharacterMedia} c=${c} /></div>
             <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#05061A] from-[38%] via-[#05061A]/75 via-[58%] to-transparent to-[85%]"></div>
@@ -1068,7 +1068,7 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
     </section>
 
     <!-- 4 · EXPLORA EL UNIVERSO -->
-    <section id="universo" className="relative py-24 sm:py-32 scroll-mt-16 lp-band">
+    <section id="universo" className="relative py-14 sm:py-20 scroll-mt-16 lp-band">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid lg:grid-cols-[1.1fr_1fr] gap-6 lg:gap-14 items-end">
           <div>
@@ -1077,13 +1077,13 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
           </div>
           <p className="text-[17px] text-white/70 leading-relaxed">KURIOSITY es un universo de experiencias que conecta el presente con un futuro posible. A través de historias, preguntas y espacios de participación, te invitamos a descubrir por qué necesitamos nuevas maneras de enseñar.</p>
         </div>
-        <p className="mt-10 text-[14px] text-white/55 flex items-center gap-2"><${Icon} name="spark" size=${15} />Toca cada experiencia para ver qué aporta y a dónde te lleva. Puedes empezar por cualquiera.</p>
+        <p className="mt-6 text-[14px] text-white/55 flex items-center gap-2"><${Icon} name="spark" size=${15} />Toca cada experiencia para ver qué aporta y a dónde te lleva. Puedes empezar por cualquiera.</p>
         <div className="mt-4"><${UniverseMap} sel=${sel} setSel=${setSel} onAction=${onAction} /></div>
       </div>
     </section>
 
     <!-- 5 · DE ESPECTADOR A PROTAGONISTA -->
-    <section id="comunidad" ref=${closeRef} className="relative overflow-hidden py-24 sm:py-32 scroll-mt-16">
+    <section id="comunidad" ref=${closeRef} className="relative overflow-hidden py-14 sm:py-20 scroll-mt-16">
       <div className="absolute inset-0 community-glow" aria-hidden="true"></div>
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-[1.15fr_.85fr] gap-12 items-start">
         <div>
@@ -1092,14 +1092,14 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
           <div className="mt-7 space-y-4 text-[17px] text-white/75 leading-relaxed max-w-[56ch]">
             <p>Una comunidad para docentes que creen que enseñar es mucho más que transmitir conocimientos: es despertar preguntas, inspirar nuevas ideas y formar personas capaces de transformar su mundo.</p>
           </div>
-          <p className="mt-10 serif text-[clamp(1.7rem,3.6vw,2.6rem)] leading-[1.15] text-white balance">¿Y si el cambio que necesita la educación empezara en tu próxima clase?</p>
+          <p className="mt-8 serif text-[clamp(1.7rem,3.6vw,2.6rem)] leading-[1.15] text-white balance">¿Y si el cambio que necesita la educación empezara en tu próxima clase?</p>
           <div className="mt-7 flex flex-wrap items-center gap-4">
             <button onClick=${session ? onEnter : onJoin} className=${btn + ' cta-grad cta-pulse pulse-white text-white font-bold px-6 py-3.5 text-[16px] hover:-translate-y-0.5'}>${session ? 'Ir a la comunidad docente' : 'Quiero transformar mi forma de enseñar'} <${Icon} name="arrow" size=${18} /></button>
             ${!session && html`<button onClick=${onLogin} className="text-[15px] text-white/70 hover:text-white underline-offset-4 hover:underline">Ya tengo cuenta · Iniciar sesión</button>`}
           </div>
           <p className="mt-4 flex items-center gap-2 text-[13px] text-white/50"><${Icon} name="shield" size=${15} />Comunidad con docentes verificados.</p>
         </div>
-        <ul className="grid gap-3 lg:mt-24">
+        <ul className="grid gap-3 lg:mt-14">
           ${[['search', 'Descubre', 'Descubre recursos para transformar tus clases.'], ['message', 'Comparte', 'Comparte experiencias con otros docentes.'], ['layers', 'Crea', 'Crea y construye nuevas estrategias de aprendizaje.']].map(([i, t, d], k) => html`<li key=${t} className="flex items-center gap-4 lp-glass rounded-[20px] p-5">
             <span className="font-mono text-[12px] text-white/40 w-5">0${k + 1}</span>
             <span className="grid place-items-center w-12 h-12 rounded-2xl shrink-0" style=${{ background: ['linear-gradient(135deg,#3D6BFF,#2DD4BF)', 'linear-gradient(135deg,#7C5CFF,#E0409A)', 'linear-gradient(135deg,#E0409A,#FF7A59)'][k] }}><${Icon} name=${i} size=${21} /></span>
@@ -1107,7 +1107,7 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
           </li>`)}
         </ul>
       </div>
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 mt-20 sm:mt-28">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 mt-12 sm:mt-16">
         <p className="font-display font-extrabold text-[clamp(2.2rem,7.5vw,6rem)] leading-[1] tracking-[-.03em] flex flex-wrap gap-x-[.35em]">
           ${['Descubre.', 'Comparte.', 'Crea.', 'Transforma.'].map((w, i) => html`<span key=${w} className=${cx('transition duration-700', kp > .35 + i * .08 ? (i === 3 ? 'grad-text' : 'text-white') : 'text-white/25')}>${w}</span>`)}
         </p>
@@ -1116,7 +1116,7 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
 
     <!-- 6 · FOOTER -->
     <footer className="border-t border-white/10">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14 grid md:grid-cols-[1.3fr_1fr_1fr_1fr] gap-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 grid md:grid-cols-[1.3fr_1fr_1fr_1fr] gap-10">
         <div>
           <${Logo} light onClick=${() => go('inicio')} />
           <p className="mt-4 serif text-[24px] leading-tight text-white/90 max-w-[18ch]">El futuro comienza con lo que hacemos hoy.</p>
