@@ -332,7 +332,7 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
     </section>
 
     <!-- 2 · EL CONFLICTO -->
-    <section id="conflicto" ref=${conflictRef} className="relative overflow-hidden py-24 sm:py-32">
+    <section id="conflicto" ref=${conflictRef} className="relative overflow-hidden pt-10 pb-12 sm:pt-14 sm:pb-16">
       <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 pointer-events-none select-none" aria-hidden="true">
         ${[['pantallas · redes sociales · inteligencia artificial · contenidos · algoritmos ·', 1], ['notificaciones · videos · respuestas instantáneas · pantallas ·', -1]].map(([t, dir], i) => html`<p key=${i} className="whitespace-nowrap font-display font-extrabold text-[clamp(3rem,9vw,7.5rem)] leading-[1.05] kw-line" style=${{ transform: `translateX(${dir * (cp * 30 - 15)}%)` }}>${t} ${t}</p>`)}
       </div>
@@ -345,7 +345,7 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
           <p>Mientras tanto, la educación enfrenta un desafío: dejar de concentrarse únicamente en transmitir respuestas y comenzar a despertar preguntas.</p>
         </div>
       </div>
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 mt-20 sm:mt-28">
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 mt-12 sm:mt-16">
         <p className="font-display font-bold text-[clamp(1.6rem,3.8vw,2.9rem)] leading-[1.18] tracking-[-.01em] balance" aria-label=${highlight.join(' ')}>
           ${highlight.map((w, i) => html`<span key=${i} aria-hidden="true" className=${cx('transition-colors duration-500', i < lit ? (/descubrir|cuestionar|imaginar|crear/.test(w) ? 'grad-text' : 'text-white') : 'text-white/40')}>${w} </span>`)}
         </p>
@@ -354,7 +354,7 @@ function Landing({ session, onJoin, onLogin, onEnter, onInfo }) {
     </section>
 
     <!-- 3 · TRES HISTORIAS -->
-    <section id="historias" className="relative py-24 sm:py-32 scroll-mt-16">
+    <section id="historias" className="relative pt-12 pb-24 sm:pt-16 sm:pb-32 scroll-mt-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid lg:grid-cols-[1fr_auto] gap-6 items-end">
           <div>
