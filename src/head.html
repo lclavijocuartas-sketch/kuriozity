@@ -1,0 +1,86 @@
+<title>Comunidad Kuriozity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: barra lateral azul noche + lienzo claro con tarjetas; landing con hero oscuro y signos de interrogación.
+   Diseño de un solo tema (claro) por decisión: es la paleta provisional de Kuriozity. */
+:root{
+  --ink:#0E1A3C; --ink-2:#1B2A5C; --violet:#6A45F5; --violet-d:#5432D9; --teal:#2DD4BF; --teal-d:#0B7F74;
+  --mist:#F3F4FA; --line:#E1E4EF; --mute:#59607E; --sun:#F5B83D; --white:#FFFFFF;
+  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: light;
+}
+html,body{height:100%}
+body{background:var(--mist);color:var(--ink);font-family:var(--body);font-size:15px;-webkit-font-smoothing:antialiased}
+#root{min-height:100%}
+.balance{text-wrap:balance}
+.no-scrollbar{scrollbar-width:none}.no-scrollbar::-webkit-scrollbar{display:none}
+.hero-bg{background:radial-gradient(55% 75% at 88% 8%,rgba(106,69,245,.5),transparent 62%),radial-gradient(45% 60% at 6% 100%,rgba(45,212,191,.26),transparent 62%),var(--ink)}
+.hero-bg::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent);mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent)}
+.cta-bg{background:radial-gradient(60% 90% at 100% 0%,rgba(106,69,245,.55),transparent 60%),radial-gradient(40% 70% at 0% 100%,rgba(45,212,191,.25),transparent 60%),var(--ink)}
+.qmarks{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.qm{position:absolute;font-family:var(--display);font-weight:800;line-height:1;color:rgba(255,255,255,.055);animation:drift 16s ease-in-out infinite alternate}
+.qm0{font-size:260px;left:-40px;top:30px}
+.qm1{font-size:150px;right:8%;top:-30px;animation-delay:-4s}
+.qm2{font-size:110px;left:42%;bottom:-20px;animation-delay:-8s}
+.qm3{font-size:200px;right:-30px;bottom:-40px;animation-delay:-2s}
+.qm4{font-size:90px;left:30%;top:10px;animation-delay:-6s}
+@keyframes drift{to{transform:translateY(-22px) rotate(7deg)}}
+.story-cover{background:var(--ink)}
+.sc0{background:linear-gradient(135deg,#6A45F5,#0E1A3C)}
+.sc1{background:linear-gradient(135deg,#0B7F74,#0E1A3C)}
+.sc2{background:linear-gradient(135deg,#F5B83D,#B4470E)}
+.sc3{background:linear-gradient(135deg,#A61E55,#6A45F5)}
+.course-grid{background-image:radial-gradient(rgba(255,255,255,.16) 1.2px,transparent 1.2px);background-size:18px 18px;-webkit-mask-image:linear-gradient(120deg,transparent 30%,#000);mask-image:linear-gradient(120deg,transparent 30%,#000)}
+.profile-cover{background:radial-gradient(70% 120% at 100% 0%,rgba(45,212,191,.6),transparent 60%),linear-gradient(120deg,#0E1A3C,#5432D9)}
+.pop{animation:pop .22s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+.fade{animation:fade .2s ease-out}@keyframes fade{from{opacity:0}}
+.fade-up{animation:fadeup .3s ease-out}@keyframes fadeup{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
+.slide-in{animation:slidein .24s ease-out}@keyframes slidein{from{transform:translateX(-100%)}}
+.heart-bump{display:inline-flex;animation:bump .35s ease-out}@keyframes bump{40%{transform:scale(1.35)}}
+.pulse{animation:pulse 1.6s ease-in-out infinite}@keyframes pulse{50%{opacity:.35}}
+details summary::-webkit-details-marker{display:none}
+/* Guía de Daniel: foco sobre el elemento explicado */
+.guide-spot{z-index:45!important;border-radius:20px;box-shadow:0 0 0 3px #2DD4BF,0 0 0 9px rgba(45,212,191,.28),0 0 0 9999px rgba(14,26,60,.38)!important;animation:spotpulse 1.8s ease-in-out infinite;transition:box-shadow .25s}
+@keyframes spotpulse{50%{box-shadow:0 0 0 3px #2DD4BF,0 0 0 14px rgba(45,212,191,.12),0 0 0 9999px rgba(14,26,60,.38)}}
+.cta-grad{background-image:linear-gradient(100deg,#6A45F5 0%,#4F5DE8 45%,#0FA89A 100%);background-size:180% 100%;background-position:0% 50%;text-shadow:0 1px 2px rgba(14,26,60,.25);transition:background-position .45s ease,transform .15s ease,box-shadow .3s ease}
+.cta-grad:hover{background-position:100% 50%;box-shadow:0 14px 30px -10px rgba(106,69,245,.75)}
+.cta-pulse{animation:ctapulse 2s ease-out infinite}
+.cta-pulse:hover{animation-play-state:paused}
+.cta-pulse.pulse-white{animation-name:ctapulsew}
+@keyframes ctapulsew{0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)}70%{box-shadow:0 0 0 16px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+@keyframes ctapulse{0%{box-shadow:0 0 0 0 rgba(45,212,191,.65)}70%{box-shadow:0 0 0 16px rgba(45,212,191,0)}100%{box-shadow:0 0 0 0 rgba(45,212,191,0)}}
+.level-pop{animation:levelpop .7s cubic-bezier(.2,1.4,.4,1)}
+@keyframes levelpop{0%{transform:scale(.3) rotate(-25deg);opacity:0}100%{transform:none;opacity:1}}
+.guide-halo{animation:halo 2.4s ease-out infinite}
+@keyframes halo{0%{transform:scale(.9);opacity:.9}100%{transform:scale(1.35);opacity:0}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.boot{min-height:100vh;display:grid;place-items:center;background:var(--ink);color:#fff;font-family:var(--display);font-size:22px;font-weight:800;letter-spacing:-.01em}
+.boot span{color:var(--teal)}
+</style>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      ink: { DEFAULT: '#0E1A3C', 2: '#1B2A5C' },
+      violet: { DEFAULT: '#6A45F5', d: '#5432D9', soft: '#EFEBFF' },
+      teal: { DEFAULT: '#2DD4BF', l: '#5EEAD4', d: '#0B7F74', soft: '#DCF5F1' },
+      mist: '#F3F4FA', line: '#E1E4EF', mute: '#59607E', sun: '#F5B83D'
+    },
+    fontFamily: {
+      display: ['"Bricolage Grotesque"', '"Avenir Next"', '"Segoe UI"', 'system-ui', 'sans-serif'],
+      sans: ['"Atkinson Hyperlegible"', '"Segoe UI"', 'system-ui', 'sans-serif'],
+      mono: ['"JetBrains Mono"', 'ui-monospace', 'Menlo', 'monospace']
+    }
+  } }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/htm@3.1.1/dist/htm.umd.js"></script>
+<div id="root"><div class="boot">kurio<span>?</span>ity</div></div>
